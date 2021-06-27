@@ -1,0 +1,264 @@
+[colors]
+background = #CC000000
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/example]
+monitor = eDP-1
+width = 100%
+height =2.5%
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = "monospace:style=bold:antialias=true:pixelsize=8;1"
+font-1 = "Noto Sans:fontformat=truetype:size=8:antialias=false;0"
+font-2 = siji:pixelsize=10;1
+
+modules-left = i3 xwindow 
+modules-center = 
+modules-right = network memory cpu battery temperature date
+
+tray-position = right
+tray-padding = 0
+tray-scale = 1.0
+;wm-restack = i3
+
+;override-redirect = true
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/example2]
+monitor = DP-1
+width = 100%
+height =2.5%
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = "monospace:style=bold:antialias=true:pixelsize=8;1"
+font-1 = "Noto Sans:fontformat=truetype:size=8:antialias=false;0"
+font-2 = siji:pixelsize=10;1
+
+modules-left = i3 xwindow 
+modules-center = 
+modules-right = date
+
+tray-position = right
+tray-padding = 0
+tray-scale = 1.0
+;wm-restack = i3
+
+;override-redirect = true
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:40:...%
+width = 20
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-padding = 1
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format-prefix =
+format-prefix-foreground = ${colors.foreground-alt}
+#format-underline = #f90000
+label = CPU %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 1
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+#format-underline = #4bffdc
+label =RAM %gb_used%
+
+[module/date]
+type = internal/date
+interval = 5
+date =%a %b %d %Y
+time = %H:%M
+format-prefix-foreground = ${colors.foreground-alt}
+label = %date% - %time%
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 100
+label-charging =⚡%percentage%%
+label-discharging =🔋%percentage%%
+label-full =✓%percentage%%
+format-charging = <label-charging>
+#format-charging-underline = #ffb52a
+
+format-discharging = <label-discharging>
+#format-discharging-underline = #ffb52a
+format-full = <label-full>
+
+#format-full-prefix = " "
+#format-full-prefix-foreground = ${colors.foreground-alt}
+#format-full-underline = ${self.format-charging-underline}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 65
+
+format =<label>
+#format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+#format-warn-underline = ${self.format-underline}
+
+label =%temperature-c%
+label-warn =%temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/network]
+type = internal/network
+interface = wlp3s0
+; All labels support the following tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+
+; Default: %ifname% %local_ip%
+label-connected = ↓ %downspeed% ↑ %upspeed% 
+
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+format-packetloss = <animation-packetloss> <label-connected>
+
+; Default: (none)
+label-disconnected = not connected
+label-disconnected-foreground = #66ffffff
+
+; Only applies if <ramp-signal> is used
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+
+; Only applies if <animation-packetloss> is used
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+animation-packetloss-framerate = 500
+
+[module/netspeed]
+type = custom/script
+exec = ~/dotfiles/bin/netspeed.sh
+interval = 1
+label = %output%
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+pseudo-transparency = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini
+

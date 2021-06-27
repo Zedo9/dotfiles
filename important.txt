@@ -1,0 +1,45 @@
+important Software : 
+	feh
+	arandr
+	install pulsemixer
+	install plasma / plasma-nm / sddm
+	remove plasma-discover*
+	Install acpi and sysstat for baraction
+	install sensors for getting temperature data
+	install geany
+	https://unix.stackexchange.com/questions/104821/how-to-terminate-a-background-process
+	https://www.howtogeek.com/196655/how-to-configure-the-grub2-boot-loaders-settings/
+	install lxappearance
+	install ttf-anonymous-pro
+	install Fira Code
+	install font matrix
+	
+Make sure /bin/sh is linked to dash instead of bash
+Fixing tapping : 
+	xinput --list-props "Elan Touchpad"
+	xinput set-prop "Elan Touchpad" 326 1
+Managing brighntess with brtightnessctl
+
+My favourite color scheme : 
+foreground : #b2b2b2
+background : #000000
+Color 1 : #000000
+Color 2 : #b21818
+Color 3 : #18b218
+Color 4 : #b26818
+Color 5 : #1818b2
+Color 6 : #b218b2
+Color 7 : #18b2b2
+Color 8 : #b2b2b2
+
+Bright : Colors : 
+fg #ffffff
+bg #686868
+#686868
+#ff5454
+#54ff54
+#ffff54
+#5454ff
+#ff54ff
+#54ffff
+#ffffff

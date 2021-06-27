@@ -1,0 +1,7 @@
+[user]
+	email = chedlyzouche9999@outlook.com
+	name = Chedly Zouche
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main

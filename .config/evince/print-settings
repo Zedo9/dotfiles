@@ -1,0 +1,30 @@
+[Print Settings]
+cups-ColorModel=RGB
+cups-OutputMode=Normal
+default-source=Main
+media-type=Plain
+cups-MediaType=Plain
+cups-job-priority=50
+cups-number-up=1
+evince-print-setting-page-autorotate=true
+evince-print-setting-page-size=false
+cover-before=none
+evince-print-setting-page-scale=1
+cups-InputSlot=Main
+print-at-time=
+quality=normal
+cover-after=none
+print-at=now
+printer=DeskJet-2130-series
+cups-job-sheets=none,none
+
+[Page Setup]
+PPDName=A4
+DisplayName=A4
+Width=210
+Height=297
+MarginTop=2.9633419460720485
+MarginBottom=14.478000322977701
+MarginLeft=2.9633331987592908
+MarginRight=2.9633419460720485
+Orientation=portrait

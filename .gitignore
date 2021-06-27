@@ -1,0 +1,4 @@
+bin/music_download/output/**
+.config/nvim/plugged
+.config/nvim/.netrwhist
+.config/qtile/__pycache__
