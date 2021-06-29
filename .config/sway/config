@@ -12,43 +12,7 @@ set $right l
 # Your preferred terminal emulator
 set $term alacritty
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /windows10/wallpapers/Wallpaper21.jpg fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
 #
@@ -63,7 +27,7 @@ output * bg /windows10/wallpapers/Wallpaper21.jpg fill
     # Start your launcher
     # set $menu wofi --show run 
     # bindsym $mod+p exec $menu
-    for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
+    for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 0
     set $menu exec $term --class=launcher -e sway-launcher-desktop
     bindsym $mod+p exec $menu
 
@@ -248,7 +212,22 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# for_window [class="[.]*"] floating enable
+# set floating for window roles
+# for_window [window_role="pop-up"] floating enable
+# for_window [window_role="bubble"] floating enable
+# for_window [window_role="task_dialog"] floating enable
+# for_window [window_role="Preferences"] floating enable
+# for_window [window_type="dialog"] floating enable
+# for_window [window_type="menu"] floating enable
+# for_window [window_role="About"] floating enable
+# for_window [title="File Operation Progress"] floating enable, border pixel 1, # sticky enable, resize set width 40 ppt height 30 ppt
+# for_window [app_id="firedragon" title="Library"] floating enable, border pixel 1, # sticky enable, resize set width 40 ppt height 30 ppt
+# for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, # sticky enable, resize set width 30 ppt height 40 ppt
+# for_window [title="Picture in picture"] floating enable, sticky enable
+# for_window [title="nmtui"] floating enable,  resize set width 50 ppt height 70 ppt
+# for_window [title="htop"] floating enable, resize set width 50 ppt height 70 ppt
+# for_window [title="Save File"] floating enable
+# for_window [title="[.]*"] floating enable sticky enable, resize set 30 ppt 60 ppt, border pixel 0
 
 
 input * {
