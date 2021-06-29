@@ -1,23 +1,21 @@
 #!/bin/sh
-# Args = Kde - Config - Home
+# Args = Config - Home
 # Formatting
-RED='\033[0;31m'
-GREEN="\033[0;32m"
 BOLD=$(tput bold)
 
 directory=`pwd`
 folders=`ls -a ${directory}/.config`
 #TODO : Make dynamic
-files=".xinitrc .bashrc .gitconfig .bash_aliases .screenlayout .themes start_sway.sh"
+files=".xinitrc .bashrc .gitconfig .bash_aliases .screenlayout start_sway.sh .dwm"
 
 # $1 source - $2 destination
 symlinkFile(){
     if [ ! -L $2 ]; then
         if [ -e $2 ]; then
-            echo "${RED}[ERROR] $2 exists but it's not a symlink. Fix it manually"
+            echo "${red}[ERROR] $2 exists but it's not a symlink. Fix it manually"
         else
             ln -s $1 $2
-            echo "${GREEN}[OK] $1 -> $2"
+            echo "${grn}[OK] $1 -> $2"
         fi
     else
         echo "${BOLD}[WARNING] $1 already symlinked"
