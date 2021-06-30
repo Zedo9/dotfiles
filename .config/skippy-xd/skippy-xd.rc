@@ -72,7 +72,7 @@ tintOpacity = 64
 opacity = 255
 
 [tooltip]
-show = false
+show = true
 followsMouse = true
 offsetX = 20
 offsetY = 20
