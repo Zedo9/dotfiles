@@ -111,6 +111,8 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 mytextclock = wibox.widget.textclock()
 -- Create the systray
 systray = wibox.widget.systray()
+-- Temperature widget
+temprature = awful.widget.watch("bash -c \"sensors | grep temp1 -m1 | cut -d ':' -f2 | tr -d ' +' \"", 10)
 
 local cw = calendar_widget({
     theme = 'dark',
@@ -165,14 +167,14 @@ local tasklist_buttons = gears.table.join(
 -- local function create_primary_screen_bar (screen)
 awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
-    local primary = "eDP-1"
+    local primary = "eDP1"
     awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
-        filter  = awful.widget.taglist.filter.all,
+        filter  = awful.widget.taglist.filter.noempty,
         buttons = taglist_buttons
     }
     s.mytasklist = awful.widget.tasklist {
@@ -181,16 +183,6 @@ awful.screen.connect_for_each_screen(function(s)
         buttons  = tasklist_buttons,
         layout   = {
             spacing = 10,
-            spacing_widget = {
-                {
-                    forced_width = 5,
-                    shape        = gears.shape.circle,
-                    widget       = wibox.widget.separator
-                },
-                valign = 'center',
-                halign = 'center',
-                widget = wibox.container.place,
-            },
             layout  = wibox.layout.fixed.horizontal
         },
         -- Notice that there is *NO* wibox.wibox prefix, it is a template,
@@ -243,6 +235,7 @@ awful.screen.connect_for_each_screen(function(s)
                     layout = wibox.layout.fixed.horizontal,
                     spacing=3,
                     mykeyboardlayout,
+                    temprature,
                     battery_widget{
                         display_notification=true,
                         timeout=5,
@@ -340,6 +333,12 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioPrev", function()
         awful.util.spawn("playerctl previous", false)
     end),
+    awful.key({}, "XF86MonBrightnessUp", function()
+        awful.util.spawn("light -A 2", false)
+    end),
+    awful.key({}, "XF86MonBrightnessDown", function()
+        awful.util.spawn("light -U 2", false)
+    end),
 
     -- Awesome
     awful.key({ modkey, "Control" }, "r", awesome.restart,
@@ -365,7 +364,10 @@ globalkeys = gears.table.join(
         {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1) end,
         {description = "select previous", group = "layout"}),
-
+    awful.key({ modkey,}, "i", function () awful.tag.incgap(5) end,
+        {description = "increase gaps", group = "layout"}),
+    awful.key({ modkey,}, "d", function () awful.tag.incgap(-5) end,
+        {description = "decrease gaps", group = "layout"}),
 
     -- Restore Client
     awful.key({ modkey, "Control" }, "n",
@@ -382,6 +384,13 @@ globalkeys = gears.table.join(
     -- Menubar
     awful.key({ modkey }, "r", function() menubar.show() end,
         {description = "show the menubar", group = "launcher"}),
+
+    -- Menubar
+    awful.key({ modkey }, "b", 
+        function() 
+            mouse.screen.mywibox.visible = not mouse.screen.mywibox.visible 
+        end,
+        {description = "toggle top bar", group = "launcher"}),
 
     -- Rofi
     awful.key({ modkey }, "p", function () awful.util.spawn("rofi -show drun") end,
@@ -575,7 +584,7 @@ end)
 -- client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 -- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
--- awful.spawn.with_shell("lxpolkit &")
+awful.spawn.with_shell("lxpolkit &")
 awful.spawn.with_shell("~/dotfiles/bin/wallpaper.sh")
 awful.spawn.with_shell("numlockx on")
 awful.spawn.with_shell("picom -CGb")

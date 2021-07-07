@@ -20,7 +20,7 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(0)
+theme.useless_gap   = 0
 theme.border_width  = dpi(0)
 -- 00 Full transparency / ff No transparency
 theme.border_normal = "#00000000"
