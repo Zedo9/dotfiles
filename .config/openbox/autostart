@@ -1,0 +1,4 @@
+~/dotfiles/bin/wallpaper.sh
+plank &
+tint2 & 
+picom -CGb

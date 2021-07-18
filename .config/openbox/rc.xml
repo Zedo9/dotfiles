@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Clearlooks</name>
+    <name>Artwiz-boxed</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -265,6 +265,11 @@
     <keybind key="A-Print">
       <action name="Execute">
         <command>scrot -s</command>
+      </action>
+    </keybind>
+    <keybind key="W-t">
+      <action name="Execute">
+        <command>alacritty</command>
       </action>
     </keybind>
     <!-- Keybindings for window switching -->
