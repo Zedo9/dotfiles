@@ -297,6 +297,11 @@ globalkeys = gears.table.join(
         function ()
             awful.client.focus.byidx( 1)
         end, {description = "focus next by index", group = "client"}),
+    awful.key({ "Mod1",}, "Tab",
+        function ()
+            awful.client.focus.byidx( 1)
+        end, {description = "focus next by index", group = "client"}),
+
     awful.key({ modkey,}, "k",
         function ()
             awful.client.focus.byidx(-1)

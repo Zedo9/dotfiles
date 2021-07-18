@@ -73,7 +73,7 @@ theme.menu_width  = dpi(100)
 
 -- systray
 theme.bg_systray = "#000000"
-theme.systray_icon_spacing = 2
+theme.systray_icon_spacing = 0
 
 -- tasklist
 theme.tasklist_disable_task_name = true
