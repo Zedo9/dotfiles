@@ -1,5 +1,5 @@
 # startup script for sway from console
-
+export GTK_THEME=Dracula
 export QT_QPA_PLATFORMTHEME=qt5ct
 export XDG_CURRENT_DESKTOP=Unity
 export MOZ_ENABLE_WAYLAND=1
