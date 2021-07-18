@@ -55,4 +55,4 @@ You can find the list of packages that I typically use in [my install-scripts re
 
 # Licence
 
-The content of this repository is licensed under the MIT Licence. Basically, that gives you the right to use, copy, modify, etc. the content how you see fit. You can read the full licence terms [here](https://opensource.org/licenses/MIT).
+The content of this repository is licensed under the MIT Licence. Basically, that gives you the right to use, copy, modify, etc. the content how you see fit.

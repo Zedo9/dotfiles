@@ -252,5 +252,6 @@ exec_always {
 }
 
 exec --no-startup-id nm-applet --indicator &
+exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dunst &
 exec --no-startup-id swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f --image "/windows10/wallpapers/Wallpaper2.jpg"'
