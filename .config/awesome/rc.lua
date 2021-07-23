@@ -216,7 +216,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s, bg = "#000000", fg = "#ffffff", opacity = 0.85})
     for out,_ in pairs(s.outputs) do
-        if out == primary or out == "eDP-1-1" then
+        if out == primary or out == "eDP-1-1" or out == "eDP-1" or out == "eDP" then
             s.mywibox:setup {
                 layout = wibox.layout.align.horizontal,
                 expand = "none",
