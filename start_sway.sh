@@ -14,4 +14,5 @@ export MOZ_ENABLE_WAYLAND=1
 #[[ $( hostname ) == nina ]] && export WLR_NO_HARDWARE_CURSORS=1
 export WLR_NO_HARDWARE_CURSORS=1
 
-exec dbus-run-session sway $@
+# exec dbus-run-session sway $@
+exec dbus-launch sway
