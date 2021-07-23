@@ -1,3 +1,3 @@
 #!/bin/sh
 xrandr --auto
-exec dbus-launch dwm
+exec dbus-launch --sh-syntax --exit-with-session awesome
