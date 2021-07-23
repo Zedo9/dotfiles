@@ -1,5 +1,7 @@
 font pango: Fira Code Medium 7
+
 default_border none
+xwayland enable
 
 ### Variables
 set $mod Mod4
@@ -54,6 +56,8 @@ output * bg /windows10/wallpapers/Wallpaper21.jpg fill
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
+    # Or use good ol' Alt+tab
+    bindsym Mod1+Tab focus left
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -212,7 +216,6 @@ input type:touchpad {
     natural_scroll disabled
     accel_profile flat
 }
-
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
@@ -221,6 +224,9 @@ exec_always {
     gsettings set $gnome-schema cursor-theme 'Adwaita'
     gsettings set $gnome-schema font-name 'Cantarel 11'
 }
+
+# Float all windows
+# for_window [app_id="[.]*"] floating enable
 
 exec --no-startup-id nm-applet --indicator &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
