@@ -214,7 +214,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, bg = "#000000", fg = "#ffffff", opacity = 0.85})
+    s.mywibox = awful.wibar({ position = "top", screen = s, bg = "#000000", fg = "#ffffff", opacity = 0.85, height = 25})
     for out,_ in pairs(s.outputs) do
         if out == primary or out == "eDP-1-1" or out == "eDP-1" or out == "eDP" then
             s.mywibox:setup {
@@ -236,12 +236,12 @@ awful.screen.connect_for_each_screen(function(s)
                     spacing=3,
                     mykeyboardlayout,
                     temprature,
-                    battery_widget{
-                        display_notification=true,
-                        timeout=5,
-                        enable_battery_warning=false,
-                        warning_msg_position="top_right"
-                    },
+                    -- battery_widget{
+                    --     display_notification=true,
+                    --     timeout=5,
+                    --     enable_battery_warning=false,
+                    --     warning_msg_position="top_right"
+                    -- },
                     brightness_widget{
                         type = 'icon_and_text',
                         program = 'light',
@@ -593,5 +593,7 @@ awful.spawn.with_shell("lxpolkit &")
 awful.spawn.with_shell("~/dotfiles/bin/wallpaper.sh")
 awful.spawn.with_shell("numlockx on")
 awful.spawn.with_shell("picom -CGb")
+awful.spawn.with_shell("cbatticon &")
+awful.spawn.with_shell("volumeicon &")
 awful.spawn.with_shell("nm-applet &")
 

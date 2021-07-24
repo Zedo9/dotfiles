@@ -8,7 +8,7 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "Fira Code Medium 9"
+theme.font          = "Source Code Pro Medium 11"
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"
@@ -74,6 +74,7 @@ theme.menu_width  = dpi(100)
 -- systray
 theme.bg_systray = "#000000"
 theme.systray_icon_spacing = 0
+theme.forced_height = 5
 
 -- tasklist
 theme.tasklist_disable_task_name = true

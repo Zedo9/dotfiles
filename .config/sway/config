@@ -213,7 +213,7 @@ input * {
 
 input type:touchpad {
     tap enabled
-    natural_scroll disabled
+    natural_scroll enabled
     accel_profile flat
 }
 set $gnome-schema org.gnome.desktop.interface
@@ -229,6 +229,8 @@ exec_always {
 # for_window [app_id="[.]*"] floating enable
 
 exec --no-startup-id nm-applet --indicator &
+# exec --no-startup-id cbatticon &
+# exec --no-startup-id volumeicon &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dunst &
 # exec --no-startup-id swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f --image "/windows10/wallpapers/Wallpaper2.jpg"'
