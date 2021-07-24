@@ -15,7 +15,7 @@ print-at-time=
 quality=normal
 cover-after=none
 print-at=now
-printer=DeskJet-2130-series
+printer=DeskJet_2130
 cups-job-sheets=none,none
 
 [Page Setup]
@@ -23,8 +23,8 @@ PPDName=A4
 DisplayName=A4
 Width=210
 Height=297
-MarginTop=2.9633419460720485
-MarginBottom=14.478000322977701
-MarginLeft=2.9633331987592908
-MarginRight=2.9633419460720485
+MarginTop=6.3499999999999996
+MarginBottom=14.224
+MarginLeft=6.3499999999999996
+MarginRight=6.3499999999999996
 Orientation=portrait
