@@ -17,7 +17,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Widgets
 local calendar_widget = require("widgets/calendar")
 local brightness_widget = require("widgets/brightness")
-local battery_widget = require("widgets/battery")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 
@@ -236,12 +235,6 @@ awful.screen.connect_for_each_screen(function(s)
                     spacing=3,
                     mykeyboardlayout,
                     temprature,
-                    -- battery_widget{
-                    --     display_notification=true,
-                    --     timeout=5,
-                    --     enable_battery_warning=false,
-                    --     warning_msg_position="top_right"
-                    -- },
                     brightness_widget{
                         type = 'icon_and_text',
                         program = 'light',
