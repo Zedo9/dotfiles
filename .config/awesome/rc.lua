@@ -594,6 +594,6 @@ awful.spawn.with_shell("~/dotfiles/bin/wallpaper.sh")
 awful.spawn.with_shell("numlockx on")
 awful.spawn.with_shell("picom -CGb")
 awful.spawn.with_shell("cbatticon &")
-awful.spawn.with_shell("volumeicon &")
+-- awful.spawn.with_shell("volumeicon &")
 awful.spawn.with_shell("nm-applet &")
 
