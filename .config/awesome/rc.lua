@@ -398,10 +398,10 @@ globalkeys = gears.table.join(
         {description = "toggle top bar", group = "launcher"}),
 
     -- Rofi
-    awful.key({ modkey }, "p", function () awful.util.spawn("rofi -show drun") end,
-        {description = "Launch Rofi", group = "programs"}),
+    --awful.key({ modkey }, "p", function () awful.util.spawn("rofi -show drun") end,
+    --    {description = "Launch Rofi", group = "programs"}),
     -- File Manager
-    awful.key({ modkey }, "f", function () awful.util.spawn("nautilus") end,
+    awful.key({ modkey }, "f", function () awful.util.spawn("pcmanfm") end,
         {description = "Launch File Manager", group = "programs"}),
     -- Firefox
     awful.key({ modkey }, "w", function () awful.util.spawn("firefox") end,
@@ -550,7 +550,8 @@ awful.rules.rules = {
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
-          "xtightvncviewer"},
+          "xtightvncviewer",
+          "Ulauncher"},
         name = {
           "Event Tester",  -- xev.
         },
@@ -559,7 +560,7 @@ awful.rules.rules = {
           "ConfigManager",  -- Thunderbird's about:config.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
-    }, properties = { floating = true }},
+    }, properties = { floating = true, placement = awful.placement.centered, }},
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
@@ -596,4 +597,5 @@ awful.spawn.with_shell("picom -CGb")
 awful.spawn.with_shell("cbatticon &")
 -- awful.spawn.with_shell("volumeicon &")
 awful.spawn.with_shell("nm-applet &")
+awful.spawn.with_shell("ulauncher --hide-window --no-window-shadow")
 

@@ -1,5 +1,5 @@
 #!/bin/sh
-lxpolkit &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom -CGb
 # Fix java apps
 export AWT_TOOLKIT=MToolkit
@@ -9,6 +9,7 @@ dwmblocks &
 cbatticon &
 # volumeicon &
 skippy-xd --start-daemon &
-dunst &
+killall dunst && dunst &
 sh ~/dotfiles/bin/wallpaper.sh
 nm-applet &
+ulauncher --hide-window --no-window-shadow &

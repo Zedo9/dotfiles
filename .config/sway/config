@@ -24,12 +24,14 @@ output * bg /windows10/wallpapers/Wallpaper21.jpg fill
     # Kill focused window
     bindsym $mod+q kill
 
-    # Start your launcher
+    # Wofi
     # set $menu wofi --show run 
     # bindsym $mod+p exec $menu
+
+    # sway-launcher-desktop
     for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 0
     set $menu exec $term --class=launcher -e sway-launcher-desktop
-    bindsym $mod+p exec $menu
+    bindsym $mod+n exec $menu
 
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -162,32 +164,23 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-
-
-# Status Bar:
-# Read `man 5 sway-bar` for more information about this section.
-#bar {
-#    position top
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    # status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-#    status_command i3status -c ~/.config/i3status/config
-#    tray_output eDP-1
-#    colors {
-#        statusline #ffffff
-#        background #000000ff
-#	    focused_workspace  #00000080 #02adee80 #ffffff
-#        active_workspace   #00000080 #5f676a80 #ffffff
-#        inactive_workspace #00000080 #00000080 #888888
-#        urgent_workspace   #2f343a #900000 #ffffff
-#    }
-#}
+# bar {
+#     position top
+#     status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+#     tray_output eDP-1
+#     colors {
+#         statusline #ffffff
+#         background #323232
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+# }
 
 bar {
     swaybar_command waybar
 }
 
 #Apps 
+bindsym $mod+p exec ulauncher-toggle
 bindsym $mod+w exec firefox
 bindsym $mod+m exec grim -g "$(slurp)" - | swappy -f -
 
@@ -226,11 +219,15 @@ exec_always {
 
 # Float all windows
 # for_window [app_id="[.]*"] floating enable
+for_window [app_id="ulauncher"] border none, floating enable
+
 
 exec --no-startup-id nm-applet --indicator &
 # exec --no-startup-id cbatticon &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id dunst &
+exec killall dunst && dunst &
 # exec --no-startup-id swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f --image "/windows10/wallpapers/Wallpaper2.jpg"'
 
 include /etc/sway/config.d/*
+
+exec ulauncher --hide-window --no-window-shadow
