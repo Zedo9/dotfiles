@@ -1,6 +1,5 @@
 [Alsa]
-card=HD-Audio Generic
-channel=Master
+card=default
 
 [Notification]
 show_notification=true
@@ -11,11 +10,11 @@ stepsize=5
 onclick=alacritty -e 'pulsemixer'
 theme=Default
 use_panel_specific_icons=false
-lmb_slider=true
+lmb_slider=false
 mmb_mute=false
-use_horizontal_slider=false
+use_horizontal_slider=true
 show_sound_level=true
-use_transparent_background=false
+use_transparent_background=true
 
 [Hotkeys]
 up_enabled=false
