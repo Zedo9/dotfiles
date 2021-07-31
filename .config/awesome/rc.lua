@@ -590,5 +590,5 @@ awful.spawn.with_shell("picom -CGb")
 awful.spawn.with_shell("cbatticon &")
 -- awful.spawn.with_shell("volumeicon &")
 awful.spawn.with_shell("nm-applet &")
-awful.spawn.with_shell("ulauncher --hide-window --no-window-shadow")
+-- awful.spawn.with_shell("ulauncher --hide-window --no-window-shadow")
 

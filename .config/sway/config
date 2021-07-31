@@ -25,14 +25,16 @@ output * bg /windows10/wallpapers/Wallpaper21.jpg fill
     bindsym $mod+q kill
 
     # Wofi
-    # set $menu wofi --show run 
-    # bindsym $mod+p exec $menu
+    set $menu wofi --show run 
+    bindsym $mod+p exec $menu
 
     # sway-launcher-desktop
-    for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 0
-    set $menu exec $term --class=launcher -e sway-launcher-desktop
-    bindsym $mod+n exec $menu
+    #for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 0
+    #set $menu exec $term --class=launcher -e sway-launcher-desktop
+    #bindsym $mod+n exec $menu
 
+    # Ulauncher
+    # bindsym $mod+p exec ulauncher-toggle
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -180,7 +182,7 @@ bar {
 }
 
 #Apps 
-bindsym $mod+p exec ulauncher-toggle
+
 bindsym $mod+w exec firefox
 bindsym $mod+m exec grim -g "$(slurp)" - | swappy -f -
 
@@ -225,9 +227,9 @@ for_window [app_id="ulauncher"] border none, floating enable
 exec --no-startup-id nm-applet --indicator &
 # exec --no-startup-id cbatticon &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec killall dunst && dunst &
+exec dunst &
 # exec --no-startup-id swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f --image "/windows10/wallpapers/Wallpaper2.jpg"'
 
 include /etc/sway/config.d/*
 
-exec ulauncher --hide-window --no-window-shadow
+# exec ulauncher --hide-window --no-window-shadow

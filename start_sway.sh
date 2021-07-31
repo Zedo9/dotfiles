@@ -10,5 +10,6 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export MOZ_ENABLE_WAYLAND=1
 
 # see https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
-#export WLR_NO_HARDWARE_CURSORS=1
-exec dbus-launch --sh-syntax --exit-with-session sway
+export WLR_NO_HARDWARE_CURSORS=1
+# exec dbus-launch --sh-syntax --exit-with-session sway
+exec sway
