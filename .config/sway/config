@@ -184,6 +184,8 @@ bar {
 #Apps 
 
 bindsym $mod+w exec firefox
+
+# Snipping tool (Secondary to flameshot)
 bindsym $mod+m exec grim -g "$(slurp)" - | swappy -f -
 
 bindsym $mod+f exec nautilus
@@ -208,7 +210,7 @@ input * {
 input type:touchpad {
     tap enabled
     natural_scroll disabled
-    accel_profile flat
+    accel_profile adaptive
 }
 set $gnome-schema org.gnome.desktop.interface
 

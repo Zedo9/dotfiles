@@ -26,7 +26,7 @@
     //    "sway/window"
     //],
     "modules-right": [
-        "temperature",
+        //"temperature",
         //"custom/keyboard-layout",
         "battery",
         "clock#date",
@@ -90,7 +90,7 @@
     "sway/workspaces": {
         "all-outputs": false,
         "disable-scroll": false,
-        "format": "{icon} {name}",
+        "format": "{name}",
         "format-icons": {
             "1": "龜", // Icon: firefox-browser
             "2": "", // Icon: mail

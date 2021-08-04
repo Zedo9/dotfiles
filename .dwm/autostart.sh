@@ -1,6 +1,6 @@
 #!/bin/sh
-# /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-lxpolkit &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# lxpolkit &
 picom -CGb
 # Fix java apps
 export AWT_TOOLKIT=MToolkit

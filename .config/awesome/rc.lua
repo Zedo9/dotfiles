@@ -394,7 +394,7 @@ globalkeys = gears.table.join(
     --awful.key({ modkey }, "p", function () awful.util.spawn("rofi -show drun") end,
     --    {description = "Launch Rofi", group = "programs"}),
     -- File Manager
-    awful.key({ modkey }, "f", function () awful.util.spawn("pcmanfm") end,
+    awful.key({ modkey }, "f", function () awful.util.spawn("nautilus") end,
         {description = "Launch File Manager", group = "programs"}),
     -- Firefox
     awful.key({ modkey }, "w", function () awful.util.spawn("firefox") end,
@@ -583,7 +583,7 @@ end)
 -- client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 -- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-awful.spawn.with_shell("lxpolkit &")
+awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &")
 awful.spawn.with_shell("~/dotfiles/bin/wallpaper.sh")
 awful.spawn.with_shell("numlockx on")
 awful.spawn.with_shell("picom -CGb")
@@ -591,4 +591,3 @@ awful.spawn.with_shell("cbatticon &")
 -- awful.spawn.with_shell("volumeicon &")
 awful.spawn.with_shell("nm-applet &")
 -- awful.spawn.with_shell("ulauncher --hide-window --no-window-shadow")
-
