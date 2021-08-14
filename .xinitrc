@@ -1,4 +1,3 @@
 #!/bin/sh
-# xrandr --auto
-# exec dwm
+# exec dbus-launch awesome
 exec dbus-launch dwm
