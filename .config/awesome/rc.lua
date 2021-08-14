@@ -391,8 +391,11 @@ globalkeys = gears.table.join(
         {description = "toggle top bar", group = "launcher"}),
 
     -- Rofi
-    --awful.key({ modkey }, "p", function () awful.util.spawn("rofi -show drun") end,
+    --awful.key({ modkey }, "m", function () awful.util.spawn("rofi -show drun") end,
     --    {description = "Launch Rofi", group = "programs"}),
+    -- Dmenu
+    awful.key({ modkey }, "p", function () awful.util.spawn("dmenu_run") end,
+        {description = "Launch Dmenu", group = "programs"}),
     -- File Manager
     awful.key({ modkey }, "f", function () awful.util.spawn("nautilus") end,
         {description = "Launch File Manager", group = "programs"}),
@@ -583,11 +586,9 @@ end)
 -- client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 -- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &")
+awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 awful.spawn.with_shell("~/dotfiles/bin/wallpaper.sh")
 awful.spawn.with_shell("numlockx on")
 awful.spawn.with_shell("picom -CGb")
 awful.spawn.with_shell("cbatticon &")
--- awful.spawn.with_shell("volumeicon &")
 awful.spawn.with_shell("nm-applet &")
--- awful.spawn.with_shell("ulauncher --hide-window --no-window-shadow")
