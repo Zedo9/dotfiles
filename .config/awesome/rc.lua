@@ -111,7 +111,7 @@ mytextclock = wibox.widget.textclock()
 -- Create the systray
 systray = wibox.widget.systray()
 -- Temperature widget
-temprature = awful.widget.watch("bash -c \"sensors | grep temp1 -m1 | cut -d ':' -f2 | tr -d ' +' \"", 10)
+-- temprature = awful.widget.watch("bash -c \"sensors | grep temp1 -m1 | cut -d ':' -f2 | tr -d ' +' \"", 10)
 
 local cw = calendar_widget({
     theme = 'dark',
@@ -234,7 +234,7 @@ awful.screen.connect_for_each_screen(function(s)
                     layout = wibox.layout.fixed.horizontal,
                     spacing=3,
                     mykeyboardlayout,
-                    temprature,
+                    -- temprature,
                     brightness_widget{
                         type = 'icon_and_text',
                         program = 'light',
