@@ -50,8 +50,8 @@
   background: #000000;
   opacity: 0.85;
   color: white;
-  font-family: SourceCodePro, Noto Sans, sans-serif;
-  font-size: 13px;
+  font-family: Cascadia Code, Noto Sans, sans-serif;
+  font-size: 15px;
 }
 
 /* Each module */

@@ -16,18 +16,18 @@
     "position": "top",
 
     // If height property would be not present, it'd be calculated dynamically
-    "height": 22,
+    // "height": 22,
 
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode"
+        "sway/workspaces"
+        //"wlr/taskbar"
     ],
     //"modules-center": [
     //    "sway/window"
     //],
     "modules-right": [
-        //"temperature",
-        //"custom/keyboard-layout",
+        "custom/brightness",
+        "temperature",
         "battery",
         "clock#date",
         "clock#time",
@@ -65,18 +65,19 @@
     },
     "clock#date": {
       "interval": 10,
-      "format": "{:%e %b %Y}", // Icon: calendar-alt
-      "tooltip-format": "{:%e %B %Y}"
+      "format": "{:%a %e %b %Y}",
+      "tooltip-format": "{:%a %e %B %Y}",
+      "on-click": "gsimplecal"
     },
-    "custom/keyboard-layout": {
-      "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
-      // Interval set only as a fallback, as the value is updated by signal
-      "interval": 30,
-      "format": " {}", // Icon: keyboard
-      // Signal sent by Sway key binding (~/.config/sway/key-bindings)
-      "signal": 1, // SIGHUP
-      "tooltip": false
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 14,
+        "icon-theme": "Numix-Circle",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close"
     },
+
     "sway/mode": {
         "format": "<span style=\"italic\">  {}</span>", // Icon: expand-arrows-alt
         "tooltip": false
@@ -103,7 +104,8 @@
         }
     },
     "temperature": {
-      "critical-threshold": 80,
+      "hwmon-path" :"/sys/class/hwmon/hwmon4/temp1_input",
+      "critical-threshold": 75,
       "interval": 5,
       "format": "{icon} {temperatureC}°C",
       "format-icons": [
@@ -114,6 +116,16 @@
           ""  // Icon: temperature-full
       ],
       "tooltip": true
+    },
+
+    "custom/brightness": {
+      "exec" : "light -G",
+      "interval" : "once",
+      "format-icons" : "",
+      "format" : "{icon} {} ",
+      "on-scroll-up" : "light -A 1",
+      "on-scroll-down" : "light -U 1",
+      "tooltip" : false
     },
 
     "tray": {
