@@ -28,4 +28,4 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export WLR_NO_HARDWARE_CURSORS=1
 export WLR_DRM_NO_MODIFIERS=1
 
-exec dbus-run-session sway
+exec sway
