@@ -5,7 +5,7 @@
 export LIBSEAT_BACKEND=logind
 
 export GTK_THEME=Dracula
-export XDG_CURRENT_DESKTOP=Unity
+export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_TYPE=wayland
 
 # Force firefox into wayland and enable hw video decoding (ff 75+)

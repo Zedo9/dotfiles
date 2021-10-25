@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# requires mons package
+mons -m
