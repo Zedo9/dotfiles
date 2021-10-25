@@ -153,8 +153,9 @@ bindsym $mod+r mode "resize"
 # Apps 
 bindsym $mod+w exec firefox
 # Snipping tool (Secondary to flameshot)
-bindsym $mod+m exec grim -g "$(slurp)" - | swappy -f -
+# bindsym $mod+m exec grim -g "$(slurp)" - | swappy -f -
 bindsym $mod+f exec nautilus
+bindsym $mod+m exec lock-effects
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 2 # increase screen brightness
@@ -183,9 +184,12 @@ bar {
 # Float all windows
 # for_window [app_id="[.]*"] floating enable
 
+include /etc/sway/config.d/*
 exec dunst &
 exec nm-applet --indicator &
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec --no-startup-id swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f --image "/windows10/wallpapers/Wallpaper2.jpg"'
-
-include /etc/sway/config.d/*
+exec --no-startup-id exec swayidle -w \
+	timeout 1800 'lock-effects' \
+	timeout 1805 'swaymsg "output * dpms off"' \
+	resume 'swaymsg "output * dpms on"' \
+    before-sleep 'lock-effects'
