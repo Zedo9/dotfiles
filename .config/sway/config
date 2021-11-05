@@ -11,7 +11,7 @@ set $up k
 set $right l
 set $term alacritty
 
-# output eDP-1 scale 1.25
+output eDP-1 scale 1.25
 
 # Random wallpaper
 set $wallpapers_path /home/zedo/Pictures/wallpapers
