@@ -2,6 +2,8 @@
 
 This repository contains the dotfiles I use on my personal Linux systems. Dotfiles include configuration files for window managers and applications; you will also find scripts (mostly in the bin directory) that I use to perform a range of tasks. Whilst this Github repository was created so that I can access my dotfiles whenever I install or reinstall a system, you are free to use them under the terms of an MIT Licence. However, you should be aware that these files are often a work in progress so I make no guarantees about how well they will work for you.
 
+![](https://i.imgur.com/nNr2q0T.png)
+
 ## What are Dotfiles
 
 Dotfiles are the customization files that are used to personalize your Linux or Unix-based system. You can tell that a file is a dotfile because the name of the file will begin with a dot! The dot at the beginning of a filename or directory name indicates also that it is a hidden file or directory.
@@ -50,7 +52,6 @@ You can find the list of packages that I typically use in [my install-scripts re
 - [ ] Work on neovim config :
   - Add language servers
   - Add more keybindings
-- [ ] Work on zathura config
 - [ ] Improve symlink script
 
 # Licence
