@@ -4,8 +4,8 @@
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
 	<unique-id>1620100991950549-1</unique-id>
-	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
-	<description>Example for a custom action</description>
+	<command>sh -c &apos;cd %f;alacritty&apos; </command>
+	<description>Open terminal in current directory</description>
 	<patterns>*</patterns>
 	<startup-notify/>
 	<directories/>

@@ -1,7 +1,7 @@
 font pango: Cascadia Code Medium 7
 
 default_border none
-xwayland enable
+xwayland disable
 
 ### Variables
 set $mod Mod4
@@ -28,14 +28,8 @@ input type:touchpad {
     natural_scroll disabled
     accel_profile adaptive
 }
-# set $gnome-schema org.gnome.desktop.interface
-# 
-# exec_always {
-#     gsettings set $gnome-schema gtk-theme 'Dracula'
-#     gsettings set $gnome-schema icon-theme 'Papirus-Dark'
-#     gsettings set $gnome-schema cursor-theme 'Adwaita'
-#     gsettings set $gnome-schema font-name 'Cascadia Code 11'
-# }
+
+exec_always import-gsettings
 
 ### Key bindings
 bindsym $mod+Return exec $term
@@ -154,7 +148,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+w exec firefox
 # Snipping tool (Secondary to flameshot)
 # bindsym $mod+m exec grim -g "$(slurp)" - | swappy -f -
-bindsym $mod+f exec nautilus
+bindsym $mod+f exec thunar
 bindsym $mod+m exec lock-effects
 
 # Sreen brightness controls
@@ -185,9 +179,10 @@ bar {
 # for_window [app_id="[.]*"] floating enable
 
 include /etc/sway/config.d/*
+
 exec dunst &
 exec nm-applet --indicator &
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id exec swayidle -w \
 	timeout 1800 'lock-effects' \
 	timeout 1805 'swaymsg "output * dpms off"' \
