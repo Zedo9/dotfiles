@@ -1,7 +1,7 @@
 font pango: Cascadia Code Medium 7
 
 default_border none
-xwayland disable
+xwayland enable
 
 ### Variables
 set $mod Mod4
@@ -148,7 +148,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+w exec firefox
 # Snipping tool (Secondary to flameshot)
 # bindsym $mod+m exec grim -g "$(slurp)" - | swappy -f -
-bindsym $mod+f exec thunar
+bindsym $mod+f exec nautilus
 bindsym $mod+m exec lock-effects
 
 # Sreen brightness controls

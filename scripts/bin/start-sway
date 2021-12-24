@@ -16,6 +16,10 @@ export GTK_CSD=0
 export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
 
+# Nvidia
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+
 # qt wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"

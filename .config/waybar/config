@@ -7,10 +7,6 @@
 // =============================================================================
 
 {
-    // -------------------------------------------------------------------------
-    // Global configuration
-    // -------------------------------------------------------------------------
-
     "layer": "top",
 
     "position": "top",
@@ -26,6 +22,7 @@
     //    "sway/window"
     //],
     "modules-right": [
+        "custom/netspeed",
         "custom/brightness",
         "temperature",
         "battery",
@@ -120,7 +117,7 @@
 
     "custom/brightness": {
       "exec" : "light -G",
-      "interval" : "once",
+      "interval" : 20,
       "format-icons" : "",
       "format" : "{icon} {} ",
       "on-scroll-up" : "light -A 1",
@@ -128,6 +125,13 @@
       "tooltip" : false
     },
 
+    "custom/netspeed": {
+        "exec" : "netspeed",
+        "interval" : 2,
+        "format-icons" : "",
+        "format" : " {} ",
+        "tooltip" : false
+    },
     "tray": {
         "icon-size": 20,
         "spacing": 3
