@@ -7,6 +7,4 @@ cbatticon &
 # skippy-xd --start-daemon &
 dunst &
 wallpaper
-/usr/bin/prime-offload
-optimus-manager-qt &
 nm-applet &

@@ -14,7 +14,7 @@ clr='\[\033[00m\]'      # Reset
 source /usr/share/git/completion/git-prompt.sh
 
 # Prompts
-PS1="${ylw}\u@\h ${grn}\w${clr}${cyn}\$(__git_ps1)${clr} > "
+PS1="${ylw}\u@\h ${grn}\w${clr}${cyn}\$(__git_ps1)${clr}\n> "
 # PS1="${ylw}[\u@\h] ${red}\d ${blu}\A${clr}\n${grn}\w${clr}${cyn}\$(__git_ps1)${clr} > "
 export MYSQL_PS1="\u@${HOSTNAME%.*.*}:\d > "
 

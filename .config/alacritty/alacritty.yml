@@ -22,6 +22,8 @@ window:
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
 
+  # The value `0.0` is completely transparent and `1.0` is opaque.
+  opacity: 0.85
   # Window decorations
   # Values for `decorations`:
   #     - full: Borders and title bar
@@ -113,8 +115,6 @@ bell:
   duration: 5
   color: "#ffffff"
 
-# The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.85
 #selection:
 #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
