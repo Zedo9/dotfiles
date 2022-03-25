@@ -1,6 +1,6 @@
 # Dotfiles
 
-This repository contains the dotfiles I use on my personal Linux systems. Dotfiles include configuration files for window managers and applications; you will also find scripts (mostly in the bin directory) that I use to perform a range of tasks. Whilst this Github repository was created so that I can access my dotfiles whenever I install or reinstall a system, you are free to use them under the terms of an MIT Licence. However, you should be aware that these files are often a work in progress so I make no guarantees about how well they will work for you.
+This repository contains the dotfiles I use on my personal Linux systems. Dotfiles include configuration files for window managers and applications; you will also find scripts (mostly in the bin directory) that I use to perform a range of tasks. Whilst this Github repository was created so that I can access my dotfiles whenever I install or reinstall a system. You are free to use them under the terms of an MIT License. However, you should be aware that these files are often a work in progress so I make no guarantees about how well they will work for you.
 
 ![](https://i.imgur.com/nNr2q0T.png)
 
@@ -26,20 +26,21 @@ The first Linux distribution I used was Pop Os. I did stick with Pop for more th
 
 My setup is fairly simple, I switch regularly between 3 different setups :
 
-1. Awesome WM + Rofi + Picom Main/[Jonaburg's fork](https://github.com/jonaburg/picom)
+1. GNOME on Wayland
 2. Sway WM + Waybar + Swaylock + Dunst + Wofi/sway-launcher-desktop
 3. Dwm + Dwmblocks + Dmenu + Dunst + Picom (Check out [my personal builds of suckless tools](https://github.com/Zedo9/suckless-tools))
 
-I have two other setups that I don't really use a lot :
+I have three other setups that I don't really use a lot :
 
 1. i3 WM + Polybar + i3lock + Dunst + Rofi + Picom
 2. Qtile + Dunst + Rofi + Picom
+3. Awesome WM + Rofi + Picom Main/[Jonaburg's fork](https://github.com/jonaburg/picom)
 
 I also sometimes switch to full desktop environments such as Xfce4 or KDE.
 
 Apps :
 
-- **Display Managers** : ly - Lightdm - No display manager (startx FTW)
+- **Display Managers** : ly - GDM - No display manager (startx FTW)
 - **Terminal Emulator** : Alacritty
 - **Browsers** : Firefox - Brave - [Ungoogled Chromium](https://github.com/Eloston/ungoogled-chromium)
 - **File Managers** : Nautilus - Ranger
