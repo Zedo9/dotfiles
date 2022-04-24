@@ -57,7 +57,7 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: Monaco
+    family: Jetbrains Mono
     style: Regular
 
   #bold:
@@ -67,7 +67,7 @@ font:
   #  family: monaco
   #  style: Italic
 
-  size: 11
+  size: 14
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -87,7 +87,7 @@ draw_bold_text_with_bright_colors: true
 
 # Colors
 import:
-  - /home/zedo/.config/alacritty/iterm.yml
+  - /home/zedo/.config/alacritty/one-dark.yml
 
 # Visual Bell
 #
@@ -126,8 +126,11 @@ cursor:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  style: Underline
-  # blinking : Always
+  style:
+    shape: Block
+    blinking: Always
+  blink_interval: 500
+
 # If this is `true`, the cursor will be rendered as a hollow box when the
 # window is not focused.
 unfocused_hollow: true

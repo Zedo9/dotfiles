@@ -55,6 +55,6 @@ You can find the list of packages that I typically use in [my install-scripts re
   - Add more keybindings
 - [ ] Improve symlink script
 
-# Licence
+# License
 
-The content of this repository is licensed under the MIT Licence. Basically, that gives you the right to use, copy, modify, etc. the content how you see fit.
+The content of this repository is licensed under the MIT License. Basically, that gives you the right to use, copy, modify, etc. the content how you see fit.
