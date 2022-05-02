@@ -23,7 +23,7 @@ window:
   dynamic_padding: false
 
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.85
+  opacity: 0.9
   # Window decorations
   # Values for `decorations`:
   #     - full: Borders and title bar
@@ -57,7 +57,7 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: Jetbrains Mono
+    family: Monaco
     style: Regular
 
   #bold:
@@ -87,7 +87,7 @@ draw_bold_text_with_bright_colors: true
 
 # Colors
 import:
-  - /home/zedo/.config/alacritty/one-dark.yml
+  - /home/zedo/.config/alacritty/hyper.yml
 
 # Visual Bell
 #
