@@ -50,9 +50,6 @@ You can find the list of packages that I typically use in [my install-scripts re
 
 # TODO
 
-- [ ] Work on neovim config :
-  - Add language servers
-  - Add more keybindings
 - [ ] Improve symlink script
 
 # License
