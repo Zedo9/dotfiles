@@ -48,9 +48,9 @@
 /* The whole bar */
 #waybar {
   background: #000000;
-  opacity: 0.85;
+  opacity: 0.90;
   color: white;
-  font-family: Cascadia Code, Noto Sans, sans-serif;
+  font-family: Fira Code, Noto Sans, sans-serif;
   font-size: 15px;
 }
 

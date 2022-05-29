@@ -17,8 +17,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 5
-    y: 5
+    x: 4
+    y: 4
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
 
@@ -57,15 +57,17 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: Monaco
+    family: Fira Code
     style: Regular
-
-  #bold:
-  #  family: monaco
-  #  style: Medium
-  #italic:
-  #  family: monaco
-  #  style: Italic
+  bold:
+    family: Fira Code
+    style: Medium
+  italic:
+    family: Fira Code
+    style: Italic
+  bold_italic:
+    family: Fira Code
+    style: Bold Italic
 
   size: 15
 
