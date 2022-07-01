@@ -13,6 +13,25 @@ wht='\[\033[01;37m\]'   # White
 clr='\[\033[00m\]'      # Reset
 source /usr/share/git/completion/git-prompt.sh
 
+# XDG cleanup (xdg-ninja)
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_STATE_HOME="$HOME"/.local/state
+export XDG_CACHE_HOME="$HOME"/.cache
+
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export XCURSOR_PATH=/usr/share/icons:${XDG_DATA_HOME}/icons
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+
 # Prompts
 PS1="${ylw}\u@\h ${grn}\w${clr}${cyn}\$(__git_ps1)${clr}\n> "
 # PS1="${ylw}[\u@\h] ${red}\d ${blu}\A${clr}\n${grn}\w${clr}${cyn}\$(__git_ps1)${clr} > "
@@ -35,6 +54,7 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+export HISTFILE="${XDG_STATE_HOME}"/bash/history
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -99,7 +119,7 @@ GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_DESCRIBE_STYLE=""
 GIT_PS1_SHOWUPSTREAM="name verbose auto"
 
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$XDG_DATA_HOME"/nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
