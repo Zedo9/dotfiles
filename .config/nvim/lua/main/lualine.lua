@@ -6,7 +6,8 @@ end
 lualine.setup {
     options = {
         icons_enabled = true,
-        theme = 'codedark',
+        -- theme = 'codedark', -- For darkplus
+        theme = 'gruvbox-flat',
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
         disabled_filetypes = {},

@@ -62,8 +62,11 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim"
 
   -- Colorschemes
-  use "lunarvim/colorschemes" -- A bunch of colorschemes 
+  -- use "lunarvim/colorschemes" -- A bunch of colorschemes 
   use "lunarvim/darkplus.nvim"
+  -- use "ellisonleao/gruvbox.nvim"
+  -- use 'mjlaufer/gruvbox-darker.nvim'
+  use 'eddyekofo94/gruvbox-flat.nvim'
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
