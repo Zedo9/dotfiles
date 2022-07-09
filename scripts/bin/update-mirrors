@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sudo reflector -c Germany -c France - C Italy -a 12 --sort rate -l 10 -p https --save /etc/pacman.d/mirrorlist
+
