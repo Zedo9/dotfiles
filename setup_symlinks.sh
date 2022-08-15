@@ -6,7 +6,7 @@ BOLD=$(tput bold)
 directory=`pwd`
 folders=`ls -a ${directory}/.config`
 #TODO : Make dynamic
-files=".xinitrc .xprofile .bashrc .bash_aliases .screenlayout .bash_profile .dwm"
+files=".xinitrc .bashrc .bash_aliases .screenlayout .bash_profile .dwm"
 
 # $1 source - $2 destination
 symlinkFile(){

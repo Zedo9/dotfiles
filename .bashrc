@@ -105,10 +105,6 @@ extract () {
   fi
 }
 
-export VISUAL="nvim"
-export EDITOR="nvim"
-export BROWSER="firefox"
-
 # Check https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh for more details
 # https://web.archive.org/web/20160704140739/http://ithaca.arpinum.org/2013/01/02/git-prompt.html
 # Git prompt config
