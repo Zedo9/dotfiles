@@ -1,0 +1,19 @@
+#!/bin/sh
+
+output="~/.local/share/fonts/MonoLisa"
+
+git clone git@github.com:koprab/monalisa-font.git
+cd monalisa-font
+
+if [ -d "$output" ]; then
+	echo "MonoLisa directory exists"
+else
+    mkdir -p $output
+    echo "Created MonoLisa directory"
+fi
+
+cp * $output
+
+# Cleanup
+cd ..
+rm -rf monalisa-font

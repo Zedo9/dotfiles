@@ -1,17 +1,18 @@
 #!/bin/sh
 
-sudo mkdir operator
-sudo wget https://github.com/coderJianXun/Operator-Mono/blob/master/src/Operator%20Mono/OperatorMono-BoldItalic.otf -P ./operator
-sudo wget https://github.com/coderJianXun/Operator-Mono/blob/master/src/Operator%20Mono/OperatorMono-Book.otf -P ./operator
-sudo wget https://github.com/coderJianXun/Operator-Mono/blob/master/src/Operator%20Mono/OperatorMono-BookItalic.otf -P ./operator
-sudo wget https://github.com/coderJianXun/Operator-Mono/blob/master/src/Operator%20Mono/OperatorMono-Light.otf -P ./operator
-sudo wget https://github.com/coderJianXun/Operator-Mono/blob/master/src/Operator%20Mono/OperatorMono-LightItalic.otf -P ./operator
-sudo wget https://github.com/coderJianXun/Operator-Mono/blob/master/src/Operator%20Mono/OperatorMono-Medium.otf -P ./operator
-sudo wget https://github.com/coderJianXun/Operator-Mono/blob/master/src/Operator%20Mono/OperatorMono-MediumItalic.otf -P ./operator
-sudo wget https://github.com/coderJianXun/Operator-Mono/blob/master/src/Operator%20Mono/OperatorMono-XLight.otf -P ./operator
-sudo wget https://github.com/coderJianXun/Operator-Mono/blob/master/src/Operator%20Mono/OperatorMono-XLightItalic.otf -P ./operator
-sudo wget https://github.com/coderJianXun/Operator-Mono/blob/master/src/Operator%20Mono/OperatorMono-Bold.otf -P ./operator
+output="~/.local/share/fonts/OperatorMono"
 
-sudo mv operator /usr/share/fonts/truetype/operator
-sudo mv operator /usr/share/fonts/opentype/operator
-sudo fc-cache -fv
+git clone git@github.com:keyding/Operator-Mono.git
+cd Operator-Mono/Fonts
+
+if [ -d "$output" ]; then
+else
+    mkdir -p $output
+    echo "Created OperatorMono directory"
+fi
+
+cp * $output
+
+# Cleanup
+cd ../..
+rm -rf Operator-Mono
