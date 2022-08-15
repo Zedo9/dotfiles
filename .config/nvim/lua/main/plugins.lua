@@ -5,7 +5,7 @@ local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
     "git",
-    "clone",
+"clone",
     "--depth",
     "1",
     "https://github.com/wbthomason/packer.nvim",
@@ -62,11 +62,8 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim"
 
   -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes 
   use "lunarvim/darkplus.nvim"
-  -- use "ellisonleao/gruvbox.nvim"
-  -- use 'mjlaufer/gruvbox-darker.nvim'
-  use 'eddyekofo94/gruvbox-flat.nvim'
+  use "olimorris/onedarkpro.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -77,13 +74,16 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
 
+  -- Colorizer
+  use "norcalli/nvim-colorizer.lua"
+
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-  use 'nvim-telescope/telescope-media-files.nvim'  
+  use 'nvim-telescope/telescope-media-files.nvim'
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP

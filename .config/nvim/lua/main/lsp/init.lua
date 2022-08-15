@@ -3,7 +3,14 @@ if not status_ok then
 	return
 end
 
-local servers = { 'sumneko_lua', 'tsserver', 'omnisharp', 'bashls', 'texlab', 'dockerls'}
+local servers = { 
+  'sumneko_lua', 
+  'tsserver', 
+--'omnisharp',
+--'volar',
+  'bashls', 
+--  'texlab', 
+  'dockerls'}
 
 lsp_installer.setup {
 	automatic_installation = true,
