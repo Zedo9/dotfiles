@@ -1,0 +1,64 @@
+#!/bin/python3
+import os
+
+
+def execute_command(cmd):
+    os.system(cmd)
+
+
+def clear_screen():
+    execute_command("clear")
+
+
+def action(question, cmds):
+    resp = ""
+    while(True):
+        resp = str(input(question + " Y/n "))
+        if (resp.upper() == 'Y' or resp.upper() == ''):
+            for cmd in cmds:
+                execute_command(cmd)
+            break
+        elif (resp.upper() == 'N'):
+            break
+        print("Please answer with Y or N")
+
+
+print("Checking failed systemd services")
+execute_command("systemctl --failed")
+question = "Continue?"
+cmds = []
+action(question, cmds)
+clear_screen()
+
+question = "Do you want to clear ~/.cache?"
+cmds = ["rm -rf ~/.cache/*"]
+action(question, cmds)
+clear_screen()
+
+question = "Do you want to clean the journal?"
+execute_command("sudo journalctl --disk-usage")
+cmds = [
+    "sudo journalctl --vacuum-size=100M",
+    "sudo systemctl restart systemd-journald.service"]
+action(question, cmds)
+clear_screen()
+
+question = "Do you want to clean paru/pacman cache?"
+cmds = ["paru -Scc"]
+action(question, cmds)
+clear_screen()
+
+question = "Do you want to clean unwanted/orphan packages?"
+cmds = ["paru -c"]
+action(question, cmds)
+
+"""
+List heaviest packages
+paru -P --stats
+
+Log files check
+sudo journalctl -p 3 -xb
+
+Realtime logs
+sudo journalctl -f
+"""
