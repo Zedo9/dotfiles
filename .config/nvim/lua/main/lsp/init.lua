@@ -5,7 +5,8 @@ end
 
 local servers = { 
   'sumneko_lua', 
-  'tsserver', 
+  'tsserver',
+  'pylsp',
 --'omnisharp',
 --'volar',
   'bashls', 
