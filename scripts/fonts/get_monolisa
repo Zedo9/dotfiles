@@ -2,7 +2,7 @@
 
 output="~/.local/share/fonts/MonoLisa"
 
-git clone git@github.com:koprab/monalisa-font.git
+git clone https://github.com/koprab/monalisa-font.git
 cd monalisa-font
 
 if [ -d "$output" ]; then

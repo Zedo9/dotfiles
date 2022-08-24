@@ -2,10 +2,11 @@
 
 output="~/.local/share/fonts/OperatorMono"
 
-git clone git@github.com:keyding/Operator-Mono.git
+git clone https://github.com/keyding/Operator-Mono.git
 cd Operator-Mono/Fonts
 
 if [ -d "$output" ]; then
+	echo "Directory exists"
 else
     mkdir -p $output
     echo "Created OperatorMono directory"
