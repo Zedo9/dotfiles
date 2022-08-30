@@ -1,4 +1,4 @@
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f ~/.zshrc ]] && . ~/.zshrc
 
 # Fix java apps
 export AWT_TOOLKIT=MToolkit
@@ -14,8 +14,9 @@ WAYLAND_FLAGS="--enable-features=UseOzonePlatform,WaylandWindowDecorations --ozo
 if [ "$XDG_SESSION_TYPE" = wayland ]; then
   # Wayland specific
   export SDL_VIDEODRIVER=wayland
-  export QT_QPA_PLATFORM=wayland
-  export GDK_BACKEND="wayland,x11"
+  export QT_QPA_PLATFORM=wayland-egl
+  export GDK_BACKEND=wayland,x11
+  export CLUTTER_BACKEND=wayland
   export MOZ_ENABLE_WAYLAND=1
   echo $WAYLAND_FLAGS > ~/.config/code-flags.conf
   echo $WAYLAND_FLAGS > ~/.config/brave-flags.conf

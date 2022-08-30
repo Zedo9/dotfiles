@@ -1,0 +1,14 @@
+# some ls aliases
+# alias ll='ls -alF'
+alias ll='exa -alF --icons'
+alias la='ls -A'
+
+# Colors
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ip='ip -color=auto'
+
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config'
