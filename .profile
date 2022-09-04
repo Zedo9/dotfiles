@@ -1,4 +1,4 @@
-[[ -f ~/.zshrc ]] && . ~/.zshrc
+[[ -f ~/.config/zsh/.zshrc ]] && . ~/.config/zsh/.zshrc
 
 # Fix java apps
 export AWT_TOOLKIT=MToolkit

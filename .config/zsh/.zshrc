@@ -28,7 +28,7 @@ compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 
 zstyle ':completion:*' menu select
 
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
+HISTFILE="$XDG_STATE_HOME"/zsh/history
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -83,7 +83,13 @@ fi
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 
-[[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
+if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
+  # capable terminal
+  [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
+else
+  # might be TTY or some other not very capable terminal
+  [[ ! -f ${ZDOTDIR:-~}/.p10k-portable.zsh ]] || source ${ZDOTDIR:-~}/.p10k-portable.zsh
+fi
 
 # NVM
 export NVM_DIR="$HOME/.config/nvm"

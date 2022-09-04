@@ -60,13 +60,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# Check https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh for more details
-# https://web.archive.org/web/20160704140739/http://ithaca.arpinum.org/2013/01/02/git-prompt.html
-# Git prompt config
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWSTASHSTATE=
-GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWCOLORHINTS=1
-GIT_PS1_DESCRIBE_STYLE=""
-GIT_PS1_SHOWUPSTREAM="name verbose auto"
