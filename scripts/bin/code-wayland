@@ -1,3 +1,0 @@
-#!/bin/sh
-
-code $WAYLAND_FLAGS $1
