@@ -3,6 +3,7 @@
 -- vim.g.gruvbox_transparent = true
 
 local colorscheme = "darkplus"
+-- local colorscheme = "darcula-solid"
 vim.g.transparent_background = true
 
 --local status_ok, onedarkpro = pcall(require, "onedarkpro")
