@@ -51,8 +51,7 @@ end
 local theme_path = string.format("%s/.config/awesome/themes/default/theme.lua", os.getenv("HOME"))
 beautiful.init(theme_path)
 
--- This is used later as the default terminal and editor to run.
-local terminal = "alacritty"
+local terminal = "kitty"
 local editor = os.getenv("EDITOR") or "nvim"
 local editor_cmd = terminal .. " -e " .. editor
 
@@ -586,9 +585,10 @@ end)
 -- client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 -- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
-awful.spawn.with_shell("~/dotfiles/bin/wallpaper.sh")
+awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &")
+awful.spawn.with_shell("wallpaper")
 awful.spawn.with_shell("numlockx on")
 awful.spawn.with_shell("picom -CGb")
 awful.spawn.with_shell("cbatticon &")
+awful.spawn.with_shell("x-custom-gamma")
 awful.spawn.with_shell("nm-applet &")
