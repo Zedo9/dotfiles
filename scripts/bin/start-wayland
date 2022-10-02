@@ -1,0 +1,10 @@
+#!/bin/sh
+
+[ -f ~/.xprofile ] && . ~/.xprofile
+
+while read env_var
+do
+    export $env_var
+done < ~/.config/environment.d/wayland.conf
+
+exec wayfire

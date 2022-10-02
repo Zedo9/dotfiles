@@ -1,0 +1,5 @@
+#!/bin/sh
+
+location_dir=~/.local/share/location.json
+
+redshift-gtk -l $(cat $location_dir | jq -r '"\(.location.lat):\(.location.lng)"') -t 6500:3500
