@@ -58,16 +58,16 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: FiraCode Nerd Font
+    family: MesloLGS NF
     style: Regular
   bold:
-    family: FiraCode Nerd Font
+    family: MesloLGS NF
     style: Medium
   italic:
-    family: FiraCode Nerd Font
+    family: MesloLGS NF
     style: Italic
   bold_italic:
-    family: FiraCode Nerd Font
+    family: MesloLGS NF
     style: Bold Italic
 
   size: 12
@@ -90,7 +90,7 @@ draw_bold_text_with_bright_colors: true
 
 # Colors
 import:
-  - /home/zedo/.config/alacritty/hyper.yml
+  - /home/zedo/.config/alacritty/iterm.yml
 
 # Visual Bell
 #

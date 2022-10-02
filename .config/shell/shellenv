@@ -43,5 +43,10 @@ export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+export TERMINAL="kitty"
+export VISUAL="nvim"
+export EDITOR="nvim"
+export BROWSER="firefox"
+
 # PATH
 export PATH=$PATH:$HOME/dotfiles/scripts/bin

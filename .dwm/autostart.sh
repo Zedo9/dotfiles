@@ -2,10 +2,12 @@
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom -CGb
 numlockx on
-xgamma -gamma 0.8
+export PATH=$PATH:$HOME/dotfiles/scripts/bin
+x-custom-gamma
 dwmblocks &
 cbatticon &
 # skippy-xd --start-daemon &
 dunst &
 wallpaper
 nm-applet &
+x-night-light &

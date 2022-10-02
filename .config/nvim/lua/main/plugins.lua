@@ -62,10 +62,10 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim"
 
   -- Colorschemes
-  -- use "lunarvim/darkplus.nvim"
+  use "luisiacc/gruvbox-baby"
   use 'martinsione/darkplus.nvim' -- With transparency
   -- use "olimorris/onedarkpro.nvim"
-  use { "briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim" }
+  -- use { "briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim" }
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
