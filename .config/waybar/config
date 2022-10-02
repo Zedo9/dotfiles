@@ -1,140 +1,48 @@
-// =============================================================================
-//
-// Waybar configuration
-//
-// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
-//
-// =============================================================================
-
 {
-    "layer": "top",
-
-    "position": "top",
-
-    // If height property would be not present, it'd be calculated dynamically
-    // "height": 22,
-
-    "modules-left": [
-        "sway/workspaces"
-        //"wlr/taskbar"
-    ],
-    //"modules-center": [
-    //    "sway/window"
-    //],
-    "modules-right": [
-        "custom/netspeed",
-        "custom/brightness",
-        "temperature",
-        "battery",
-        "clock#date",
-        "clock#time",
-        "tray",
-    ],
-
-
-    // -------------------------------------------------------------------------
-    // Modules
-    // -------------------------------------------------------------------------
-
-    "battery": {
-        "interval": 10,
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        // Connected to AC
-        "format": " {icon} {capacity}%", // Icon: bolt
-        // Not connected to AC
-        "format-discharging": "{icon} {capacity}%",
-        "format-icons": [
-            "", // Icon: battery-full
-            "", // Icon: battery-three-quarters
-            "", // Icon: battery-half
-            "", // Icon: battery-quarter
-            ""  // Icon: battery-empty
-        ],
-        "tooltip": true
-    },
-
-    "clock#time": {
-        "interval": 60,
-        "format": "{:%H:%M}",
-    },
-    "clock#date": {
-      "interval": 10,
-      "format": "{:%a %e %b %Y}",
-      "tooltip-format": "{:%a %e %B %Y}",
-      "on-click": "gsimplecal"
-    },
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "icon-size": 14,
-        "icon-theme": "Numix-Circle",
-        "tooltip-format": "{title}",
-        "on-click": "activate",
-        "on-click-middle": "close"
-    },
-
-    "sway/mode": {
-        "format": "<span style=\"italic\">  {}</span>", // Icon: expand-arrows-alt
-        "tooltip": false
-    },
-
-    "sway/window": {
-        "format": "{}",
-        "max-length": 50
-    },
-
-    "sway/workspaces": {
-        "all-outputs": false,
-        "disable-scroll": false,
-        "format": "{name}",
-        "format-icons": {
-            "1": "龜", // Icon: firefox-browser
-            "2": "", // Icon: mail
-            "3": "", // Icon: code
-            "4": "", // Icon: terminal
-            "5": "", // Icon: terminal
-            "urgent": "",
-            "focused": "",
-            "default": ""
-        }
-    },
-    "temperature": {
-      "hwmon-path" :"/sys/class/hwmon/hwmon4/temp1_input",
-      "critical-threshold": 75,
-      "interval": 5,
-      "format": "{icon} {temperatureC}°C",
-      "format-icons": [
-          "", // Icon: temperature-empty
-          "", // Icon: temperature-quarter
-          "", // Icon: temperature-half
-          "", // Icon: temperature-three-quarters
-          ""  // Icon: temperature-full
-      ],
-      "tooltip": true
-    },
-
-    "custom/brightness": {
-      "exec" : "light -G",
-      "interval" : 20,
-      "format-icons" : "",
-      "format" : "{icon} {} ",
-      "on-scroll-up" : "light -A 1",
-      "on-scroll-down" : "light -U 1",
-      "tooltip" : false
-    },
-
-    "custom/netspeed": {
-        "exec" : "netspeed",
-        "interval" : 2,
-        "format-icons" : "",
-        "format" : " {} ",
-        "tooltip" : false
-    },
-    "tray": {
-        "icon-size": 20,
-        "spacing": 3
-    }
-
+  "layer": "top",
+  "spacing": 10,
+  "modules-left": [
+    "wlr/taskbar",
+    "wlr/workspaces"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "custom/netspeed",
+    "custom/cputemp",
+    "clock#date",
+    "clock#time",
+    "tray"
+  ],
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 25,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+  },
+  "clock#time": {
+    "interval": 60,
+    "format": "{:%H:%M}"
+  },
+  "clock#date": {
+    "interval": 10,
+    "format": " {:%a %e %b %Y}",
+    "tooltip-format": "{:%a %e %B %Y}",
+    "on-click": "gsimplecal"
+  },
+  "tray": {
+    "icon-size": 25,
+    "spacing": 5
+  },
+  "custom/netspeed": {
+    "exec": "netspeed",
+    "interval": 1.5,
+    "tooltip": false
+  },
+  "custom/cputemp": {
+    "format": " {}",
+    "exec": "cputemp",
+    "interval": 2,
+    "tooltip": false
+  }
 }
