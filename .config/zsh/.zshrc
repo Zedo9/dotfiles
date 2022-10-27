@@ -19,12 +19,12 @@ if [ -f ~/.config/shell/shellenv ]; then
 fi
 
 ### Colors ###
-LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
-export LS_COLORS
+autoload -U colors && colors
 
 autoload -Uz compinit promptinit
 promptinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+_comp_options+=(globdots)		# Include hidden files.
 
 zstyle ':completion:*' menu select
 
@@ -90,6 +90,9 @@ else
   # might be TTY or some other not very capable terminal
   [[ ! -f ${ZDOTDIR:-~}/.p10k-portable.zsh ]] || source ${ZDOTDIR:-~}/.p10k-portable.zsh
 fi
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # NVM
 export NVM_DIR="$HOME/.config/nvm"
