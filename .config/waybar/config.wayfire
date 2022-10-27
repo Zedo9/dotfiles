@@ -1,0 +1,63 @@
+{
+  "layer": "top",
+  "spacing": 20,
+  "modules-left": [
+    "wlr/taskbar",
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "custom/netspeed",
+    "custom/cputemp",
+    "battery",
+    "clock#date",
+    "clock#time",
+    "tray"
+  ],
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 25,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+  },
+  "clock#time": {
+    "interval": 60,
+    "format": "{:%H:%M}"
+  },
+  "clock#date": {
+    "interval": 10,
+    "format": " {:%a%e %b %Y}",
+    "tooltip-format": "{:%a %e %B %Y}",
+    "on-click": "gsimplecal"
+  },
+  "tray": {
+    "icon-size": 25,
+    "spacing": 5
+  },
+  "custom/netspeed": {
+    "exec": "netspeed",
+    "interval": 2,
+    "tooltip": false
+  },
+  "custom/cputemp": {
+    "format": " {}",
+    "exec": "cputemp",
+    "interval": 2,
+    "tooltip": false
+  },
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  }
+}
