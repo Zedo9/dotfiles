@@ -5,13 +5,13 @@ end
 
 local servers = { 
   'sumneko_lua', 
-  'tsserver',
-  'pylsp',
+--  'tsserver',
+--  'pylsp',
 --'omnisharp',
---'volar',
   'bashls', 
 --  'texlab', 
-  'dockerls'}
+--  'dockerls'
+}
 
 lsp_installer.setup {
 	automatic_installation = true,
