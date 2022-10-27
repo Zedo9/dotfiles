@@ -1,0 +1,3 @@
+#!/bin/sh
+
+slurp | grim -g - ~/Pictures/$(date '+%F_%T').png

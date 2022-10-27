@@ -7,4 +7,4 @@ do
     export $env_var
 done < ~/.config/environment.d/wayland.conf
 
-exec wayfire
+exec Hyprland

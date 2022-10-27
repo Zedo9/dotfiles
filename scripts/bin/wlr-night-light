@@ -4,4 +4,4 @@ location_dir=~/.local/share/location.json
 lat=`jq '.location.lat' $location_dir`
 lng=`jq '.location.lng' $location_dir`
 
-gammastep-indicator -t 6500:3500 -l $lat:$lng
+gammastep-indicator -t 6500:3000 -l $lat:$lng
