@@ -1,0 +1,40 @@
+[$Version]
+update_info=bismuth_new_logger.upd:bismuth-new-logger,kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-effect-to-js,kwin.upd:port-scale-effect-to-js,kwin.upd:port-dimscreen-effect-to-js,kwin.upd:auto-bordersize,kwin.upd:animation-speed,kwin.upd:desktop-grid-click-behavior,kwin.upd:no-swap-encourage,kwin.upd:make-translucency-effect-disabled-by-default,kwin.upd:remove-flip-switch-effect,kwin.upd:remove-cover-switch-effect,kwin.upd:remove-cubeslide-effect,kwin.upd:remove-xrender-backend,kwin.upd:enable-scale-effect-by-default,kwin.upd:overview-group-plugin-id,kwin.upd:animation-speed-cleanup
+
+[Desktops]
+Id_1=6794447f-832e-4197-8a8b-6310f40c9731
+Id_2=208656bd-1bff-4158-9853-7c02f07f2b57
+Id_3=e35facfb-ca9b-46c1-8782-088dcdc28d2f
+Id_4=fa8dda4f-ee61-431c-bb67-23d21732e44b
+Id_5=76283e2e-8809-4084-8e3c-78b05c3dff05
+Name_2=New Desktop
+Name_3=New Desktop
+Name_4=New Desktop
+Name_5=New Desktop
+Number=5
+Rows=1
+
+[NightColor]
+Active=true
+LatitudeAuto=36.8049
+LongitudeAuto=10.1778
+NightTemperature=2500
+
+[Plugins]
+bismuthEnabled=true
+kwin4_effect_fadedesktopEnabled=true
+slideEnabled=false
+
+[Script-bismuth]
+enableSpiralLayout=false
+enableSpreadLayout=false
+enableStairLayout=false
+enableThreeColumnLayout=false
+layoutPerActivity=false
+maximizeSoleTile=true
+noTileBorder=true
+
+[Windows]
+DelayFocusInterval=100
+FocusPolicy=FocusFollowsMouse
+NextFocusPrefersMouse=true
