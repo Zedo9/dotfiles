@@ -1,6 +1,6 @@
 {
   "layer": "top",
-  "spacing": 1,
+  "spacing": 20,
   "modules-left": [
     "wlr/workspaces",
     "hyprland/window"
@@ -28,7 +28,7 @@
       "4": "4",
       "5": "5",
       "urgent": "",
-      // "active": "",
+      //"active": "",
       "default": ""
     }
   },
@@ -66,10 +66,10 @@
   "battery": {
     "interval": 60,
     "states": {
-      "warning": 30,
+      "warning": 25,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
+    "format": "{icon}  {capacity}%",
     "format-icons": [
       "",
       "",
