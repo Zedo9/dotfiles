@@ -1,4 +1,5 @@
 #!/bin/sh
+
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom -CGb
 numlockx on
@@ -12,4 +13,4 @@ nm-applet &
 x-night-light &
 
 # Faster keyboard rate
-xset r rate 200 30 &
+xset r rate 240 50 &

@@ -1,22 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/
-blk='\[\033[01;30m\]'   # Black
-red='\[\033[01;31m\]'   # Red
-grn='\[\033[01;32m\]'   # Green
-ylw='\[\033[01;33m\]'   # Yellow
-blu='\[\033[01;34m\]'   # Blue
-pur='\[\033[01;35m\]'   # Purple
-cyn='\[\033[01;36m\]'   # Cyan
-wht='\[\033[01;37m\]'   # White
-clr='\[\033[00m\]'      # Reset
-source /usr/share/git/completion/git-prompt.sh
-
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
-
-# Prompt
-PS1="${ylw}\u@\h ${grn}\w${clr}${cyn}\$(__git_ps1)${clr}\n> "
 
 if [ -f ~/.config/shell/aliases ]; then
     . ~/.config/shell/aliases
@@ -60,3 +45,13 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+. /usr/share/fzf/key-bindings.bash
+. /usr/share/fzf/completion.bash
+
+# NVM
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(starship init bash)"
