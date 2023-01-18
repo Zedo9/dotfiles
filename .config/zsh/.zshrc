@@ -80,16 +80,16 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 fi
 
 ### Powerlevel10k ###
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-
-if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
-  # capable terminal
-  [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
-else
-  # might be TTY or some other not very capable terminal
-  [[ ! -f ${ZDOTDIR:-~}/.p10k-portable.zsh ]] || source ${ZDOTDIR:-~}/.p10k-portable.zsh
-fi
+# source ~/powerlevel10k/powerlevel10k.zsh-theme
+# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# 
+# if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
+#   # capable terminal
+#   [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
+# else
+#   # might be TTY or some other not very capable terminal
+#   [[ ! -f ${ZDOTDIR:-~}/.p10k-portable.zsh ]] || source ${ZDOTDIR:-~}/.p10k-portable.zsh
+# fi
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -98,3 +98,6 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Starship
+eval "$(starship init zsh)"
