@@ -23,7 +23,7 @@ window:
   dynamic_padding: false
 
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.7
+  opacity: 0.9
   # Window decorations
   # Values for `decorations`:
   #     - full: Borders and title bar
@@ -58,16 +58,16 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: Hack Nerd Font
+    family: Monaco Nerd Font Mono 
     style: Regular
   bold:
-    family: Hack Nerd Font
+    family: Monaco Nerd Font Mono 
     style: Medium
   italic:
-    family: Hack Nerd Font
+    family: Monaco Nerd Font Mono 
     style: Italic
   bold_italic:
-    family: Hack Nerd Font 
+    family: Monaco Nerd Font Mono  
     style: Bold Italic
 
   size: 18
@@ -90,7 +90,7 @@ draw_bold_text_with_bright_colors: true
 
 # Colors
 import:
-  - /home/zedo/.config/alacritty/hyper.yml
+  - /home/zedo/.config/alacritty/gruvbox-dark.yml
 
 # Visual Bell
 #
