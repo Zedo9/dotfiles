@@ -2,35 +2,35 @@
     "com.github.ulauncher.ulauncher-emoji": {
         "id": "com.github.ulauncher.ulauncher-emoji",
         "url": "https://github.com/Ulauncher/ulauncher-emoji",
-        "updated_at": "2022-08-02T19:39:40.265579",
+        "updated_at": "2023-03-08T21:51:32.876062",
         "last_commit": "4c6af50d1c9a24d5aad2c597634ff0c634972a5c",
         "last_commit_time": "2021-08-08T19:19:59"
     },
     "com.github.epholys.ultz": {
         "id": "com.github.epholys.ultz",
         "url": "https://github.com/Epholys/ultz",
-        "updated_at": "2022-08-02T19:41:43.436557",
+        "updated_at": "2023-03-08T21:51:36.949298",
         "last_commit": "9f0749d6ab1fcb99545dae75934b698e5ff975b6",
         "last_commit_time": "2021-05-12T14:01:01"
     },
     "com.github.dhelmr.ulauncher-duckduckgo-bangs": {
         "id": "com.github.dhelmr.ulauncher-duckduckgo-bangs",
         "url": "https://github.com/dhelmr/ulauncher-duckduckgo-bangs",
-        "updated_at": "2022-08-02T19:48:03.338674",
+        "updated_at": "2023-03-08T21:51:40.667608",
         "last_commit": "23d64d66120b06d5373da9a061680a34d6d6691a",
         "last_commit_time": "2021-09-03T15:25:03"
     },
     "com.github.zensoup.ulauncher-unicode": {
         "id": "com.github.zensoup.ulauncher-unicode",
         "url": "https://github.com/zensoup/ulauncher-unicode",
-        "updated_at": "2022-08-02T20:05:12.456913",
+        "updated_at": "2023-03-08T21:51:45.578335",
         "last_commit": "0ad36c00a888e687b4bfbf76f266f1000040b337",
         "last_commit_time": "2019-07-11T06:53:31"
     },
     "com.github.fisadev.ulauncher-better-file-browser": {
         "id": "com.github.fisadev.ulauncher-better-file-browser",
         "url": "https://github.com/fisadev/ulauncher-better-file-browser",
-        "updated_at": "2022-08-02T20:11:29.344783",
+        "updated_at": "2023-03-08T21:51:48.524568",
         "last_commit": "8ec8a0dda09e172de62051cd1f251816ce4af368",
         "last_commit_time": "2019-09-06T19:20:09"
     }

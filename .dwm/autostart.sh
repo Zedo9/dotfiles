@@ -8,7 +8,7 @@ x-custom-gamma
 dwmblocks &
 cbatticon &
 dunst &
-wallpaper
+x-wallpaper
 nm-applet &
 x-night-light &
 

@@ -1,0 +1,64 @@
+{
+  "layer": "top",
+  "spacing": 20,
+  "modules-left": [
+    "sway/workspaces",
+    "sway/window"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "custom/netspeed",
+		"custom/brightness",
+    "custom/cputemp",
+    "battery",
+    "clock#date",
+    "clock#time",
+    "tray"
+  ],
+  "clock#time": {
+    "interval": 60,
+    "format": "{:%I:%M %p}"
+  },
+  "clock#date": {
+    "interval": 10,
+    "format": " {:%a %e %b %Y}",
+    "tooltip-format": "{:%a %e %B %Y}",
+    "on-click": "gsimplecal"
+  },
+  "tray": {
+    "icon-size": 25,
+    "spacing": 5
+  },
+  "custom/netspeed": {
+    "exec": "netspeed",
+    "interval": 2,
+    "tooltip": false
+  },
+  "custom/cputemp": {
+    "format": "{}",
+    "exec": "cputemp",
+    "interval": 2,
+    "tooltip": false
+  },
+	"custom/brightness": {
+    "format": "{}",
+    "exec": "brightness",
+    "interval": 60,
+    "tooltip": false
+  },
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 25,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  }
+}
