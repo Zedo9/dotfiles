@@ -1,11 +1,15 @@
 #!/bin/sh
 
+export XDG_SESSION_TYPE=wayland
+
 export GDK_BACKEND="wayland,x11"
 export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
+export WLR_NO_HARDWARE_CURSORS=1
+# export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+# export QT_AUTO_SCREEN_SCALE_FACTOR=1
+# export QT_QPA_PLATFORM="wayland;xcb" # Tell QT applications to use the Wayland backend, and fall back to x11 if Wayland is unavailable
 
-#XDG_CURRENT_DESKTOP=Sway
-#XDG_SESSION_DESKTOP=sway
 export MOZ_ENABLE_WAYLAND=1
 export MOZ_WAYLAND_USE_VAAPI=1
 
@@ -13,16 +17,29 @@ export XCURSOR_SIZE=24
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Nvidia stuff
-# export LIBVA_DRIVER_NAME=nvidia
-#export XDG_SESSION_TYPE=wayland
+#export LIBVA_DRIVER_NAME=nvidia
 #export GBM_BACKEND=nvidia-drm
 #export __GLX_VENDOR_LIBRARY_NAME=nvidia
 #export WLR_NO_HARDWARE_CURSORS=1
+#export WLR_DRM_NO_ATOMIC=1 # use legacy DRM interface instead of atomic mode setting. Might fix flickering issues.
 
 export TERMINAL=alacritty
 export VISUAL=nvim
 export EDITOR=nvim
 export BROWSER=firefox
+
+case "$1" in
+    # List patterns for the conditions you want to meet
+    sway)
+        export XDG_CURRENT_DESKTOP=sway
+        export XDG_SESSION_DESKTOP=sway
+        exec sway --unsupported-gpu;;
+    hypr) 
+        export XDG_CURRENT_DESKTOP=Hyprland
+        export XDG_SESSION_DESKTOP=Hyprland
+        exec Hyprland;;
+    *) echo "$1 is not supported";;  # match everything
+esac
 
 # This detects which is the device path of the integrated card
 # val=$(udevadm info -a -n /dev/dri/card1 | grep boot_vga | rev | cut -c 2)
@@ -31,4 +48,3 @@ export BROWSER=firefox
 # The first card is used for actual rendering
 # and display buffers are copied to the secondary cards for any displays connected to them.
 #WLR_DRM_DEVICES=/dev/dri/card0:/dev/dri/card1 Hyprland
-exec sway --unsupported-gpu
