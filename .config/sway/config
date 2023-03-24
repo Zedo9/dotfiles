@@ -7,7 +7,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
+set $term kitty
 
 output eDP-1 scale 1
 
@@ -148,7 +148,7 @@ bindsym $mod+r mode "resize"
 
 # Apps 
 bindsym $mod+w exec firefox
-bindsym $mod+f exec thunar
+bindsym $mod+f exec nautilus
 # bindsym $mod+l exec lock-effects
 
 # Sreen brightness controls

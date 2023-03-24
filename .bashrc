@@ -48,6 +48,7 @@ fi
 
 . /usr/share/fzf/key-bindings.bash
 . /usr/share/fzf/completion.bash
+. ~/.config/fzf/fzf.sh
 
 # NVM
 export NVM_DIR="$HOME/.config/nvm"

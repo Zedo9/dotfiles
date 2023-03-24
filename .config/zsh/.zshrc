@@ -79,20 +79,13 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
-### Powerlevel10k ###
-# source ~/powerlevel10k/powerlevel10k.zsh-theme
-# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# 
-# if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
-#   # capable terminal
-#   [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
-# else
-#   # might be TTY or some other not very capable terminal
-#   [[ ! -f ${ZDOTDIR:-~}/.p10k-portable.zsh ]] || source ${ZDOTDIR:-~}/.p10k-portable.zsh
-# fi
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+. /usr/share/fzf/key-bindings.zsh
+. /usr/share/fzf/completion.zsh
+. ~/.config/fzf/fzf.sh
 
 # NVM
 export NVM_DIR="$HOME/.config/nvm"
