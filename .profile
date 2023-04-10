@@ -1,8 +1,8 @@
 #!/bin/sh
 
-[ -f $HOME/.bashrc ] && . $HOME/.bashrc
+[ -f "$HOME"/.bashrc ] && . "$HOME"/.bashrc
 
-if [ -n "$DESKTOP_SESSION" ];then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
-fi
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# eval $(gnome-keyring-daemon --start)
+# export SSH_AUTH_SOCK

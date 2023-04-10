@@ -1,16 +1,19 @@
 #!/bin/sh
 
-/usr/lib/polkit-kde-authentication-agent-1 &
+xrandr --output eDP --set TearFree on
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom -CGb
 numlockx on
-export PATH=$PATH:$HOME/dotfiles/scripts/bin
+export PATH="$PATH":"$HOME"/dotfiles/scripts/bin
 x-custom-gamma
+wmname "LG3D" # For java apps to work
 dwmblocks &
 cbatticon &
 dunst &
 x-wallpaper
 nm-applet &
 x-night-light &
-
+xsettingsd &
+easyeffects --gapplication-service &
 # Faster keyboard rate
-xset r rate 240 50 &
+xset r rate 240 50

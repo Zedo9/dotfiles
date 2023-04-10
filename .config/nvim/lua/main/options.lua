@@ -24,7 +24,7 @@ vim.o.cmdheight = 1
 vim.o.showmode = false
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -44,9 +44,9 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 2500
 
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 
 vim.o.colorcolumn = "80"
 
@@ -57,7 +57,7 @@ vim.o.clipboard = "unnamedplus"
 vim.o.termguicolors = true
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = "menuone,noselect"
 
 vim.o.wrap = true
 vim.o.scrolloff = 8

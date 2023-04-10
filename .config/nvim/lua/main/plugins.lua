@@ -57,6 +57,10 @@ local plugins = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		dependencies = { "nvim-treesitter" },
 	},
+	{ -- Context
+		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = { "nvim-treesitter" },
+	},
 
 	"windwp/nvim-autopairs",
 	-- Git related plugins

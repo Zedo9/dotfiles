@@ -4,11 +4,11 @@
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 
 if [ -f ~/.config/shell/aliases ]; then
-    . ~/.config/shell/aliases
+  . ~/.config/shell/aliases
 fi
 
 if [ -f ~/.config/shell/shellenv ]; then
-    . ~/.config/shell/shellenv
+  . ~/.config/shell/shellenv
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -33,7 +33,7 @@ shopt -s checkwinsize
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=yes
+export force_color_prompt=yes
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -52,7 +52,7 @@ fi
 
 # NVM
 export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 eval "$(starship init bash)"

@@ -49,4 +49,4 @@ export EDITOR="nvim"
 export BROWSER="firefox"
 
 # PATH
-export PATH=$PATH:$HOME/dotfiles/scripts/bin:$HOME/.local/bin
+export PATH=$PATH:$HOME/dotfiles/scripts/bin:$HOME/.local/bin:$HOME/.config/emacs/bin

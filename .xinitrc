@@ -35,5 +35,5 @@ fi
 
 # xrandr --setprovideroutputsource modesetting NVIDIA-0
 # xrandr --auto
-xrandr --output eDP --set TearFree on
+# xrandr --output eDP --set TearFree on
 exec dwm
