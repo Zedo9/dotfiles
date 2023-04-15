@@ -1,7 +1,9 @@
 #!/bin/sh
 
 # Get user selection via dmenu
-chosen=$(cut -d ';' -f1 ~/dotfiles/.utils/chars/* | dmenu -i -l 30 | sed "s/ .*//")
+chosen=$(cut -d ';' -f1 ~/dotfiles/.utils/chars/* | rofi -dmenu -no-show-icons | sed "s/ .*//")
+
+# chosen=$(cut -d ';' -f1 ~/dotfiles/.utils/chars/* | dmenu -i -l 15 -fn "Noto Color Emoji:size=18" | sed "s/ .*//")
 
 # Exit if none chosen
 [ -z "$chosen" ] && exit

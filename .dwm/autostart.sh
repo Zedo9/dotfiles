@@ -6,7 +6,11 @@ picom -CGb
 numlockx on
 export PATH="$PATH":"$HOME"/dotfiles/scripts/bin
 x-custom-gamma
-wmname "LG3D" # For java apps to work
+playerctld daemon
+# For java apps to work
+wmname "LG3D" 
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 dwmblocks &
 cbatticon &
 dunst &
@@ -15,5 +19,9 @@ nm-applet &
 x-night-light &
 xsettingsd &
 easyeffects --gapplication-service &
+keyring
+
+systemctl --user import-environment DISPLAY
+clipmenud &
 # Faster keyboard rate
 xset r rate 240 50
