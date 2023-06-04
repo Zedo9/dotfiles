@@ -1,3 +1,4 @@
 #!/bin/sh
 
-slurp | grim -g - ~/Pictures/$(date '+%F_%T').png
+# grim -g "$(slurp)" - | wl-copy
+grim -g "$(slurp)" - | swappy -f -

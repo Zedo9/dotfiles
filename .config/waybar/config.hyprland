@@ -54,7 +54,7 @@
   "custom/cputemp": {
     "format": "{}",
     "exec": "cputemp",
-    "interval": 2,
+    "interval": 1,
     "tooltip": false
   },
 	"custom/brightness": {

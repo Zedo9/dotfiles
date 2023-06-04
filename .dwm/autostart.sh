@@ -1,6 +1,5 @@
 #!/bin/sh
 
-xrandr --output eDP --set TearFree on
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom -CGb
 numlockx on
@@ -18,7 +17,7 @@ x-wallpaper
 nm-applet &
 x-night-light &
 xsettingsd &
-easyeffects --gapplication-service &
+# easyeffects --gapplication-service &
 keyring
 
 systemctl --user import-environment DISPLAY

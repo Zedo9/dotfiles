@@ -199,9 +199,7 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = "ePapirus-Dark, Adwaita"
-    # You can also set multiple icon themes, with the leftmost one being used first.
-    # icon_theme = "Adwaita, breeze"
+    icon_theme = "Papirus, Adwaita"
 
     # Align icons left/right/top/off
     icon_position = left

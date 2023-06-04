@@ -1,29 +1,47 @@
 * {
-  font-family: JetBrainsMono Nerd Font, FontAwesome, Roboto, Helvetica;
-  font-size: 20px;
+  font-family: MesloLGS Nerd Font, FontAwesome, Roboto, Helvetica;
+  font-size: 17px;
 }
 
 window#waybar {
-  background-color: rgba(0, 0, 0, 0.9);
-  color: #ffffff;
-  transition-property: background-color;
-  transition-duration: 0.5s;
-  border-radius: 0%;
-  padding: 0;
-  margin: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: #cdd6f4;
 }
 
-window#waybar.hidden {
-  opacity: 0.2;
+tooltip {
+  background: #1e1e2e;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #11111b;
 }
 
-window#waybar.termite {
-  background-color: #3f3f3f;
+#workspaces button {
+  padding: 5px;
+  color: #313244;
+  margin-right: 5px;
 }
 
-window#waybar.chromium {
-  background-color: #000000;
-  border: none;
+#workspaces button.active {
+  color: #a6adc8;
+}
+
+#workspaces button.focused {
+  color: #a6adc8;
+  background: #eba0ac;
+  border-radius: 10px;
+}
+
+#workspaces button.urgent {
+  color: #11111b;
+  background: #a6e3a1;
+  border-radius: 10px;
+}
+
+#workspaces button:hover {
+  background: #11111b;
+  color: #cdd6f4;
+  border-radius: 10px;
 }
 
 button {
@@ -62,25 +80,6 @@ button:hover {
 #mode {
   /* background-color: #64727d; */
   border-bottom: 3px solid #ffffff;
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-  color: #ffffff;
 }
 
 #window,

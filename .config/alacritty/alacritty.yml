@@ -59,7 +59,7 @@ scrolling:
 font:
   normal:
     family: MesloLGS Nerd Font
-    style: Medium
+    style: Regular
   bold:
     family: MesloLGS Nerd Font
     style: Bold

@@ -36,6 +36,9 @@ SAVEHIST=1000
 bindkey -e
 typeset -g -A key
 
+# Make word jumping like bash in paths
+export WORDCHARS=''
+
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 key[Home]="${terminfo[khome]}"

@@ -4,11 +4,11 @@
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 
 if [ -f ~/.config/shell/aliases ]; then
-  . ~/.config/shell/aliases
+    . "$HOME"/.config/shell/aliases
 fi
 
 if [ -f ~/.config/shell/shellenv ]; then
-  . ~/.config/shell/shellenv
+    . "$HOME"/.config/shell/shellenv
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -39,16 +39,16 @@ export force_color_prompt=yes
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
 . /usr/share/fzf/key-bindings.bash
 . /usr/share/fzf/completion.bash
-. ~/.config/fzf/fzf.sh
+. "$HOME"/.config/fzf/fzf.sh
 
 # NVM
 export NVM_DIR="$HOME/.config/nvm"

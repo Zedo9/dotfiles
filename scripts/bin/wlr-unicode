@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Get user selection via wofi
-chosen=$(cut -d ';' -f1 ~/dotfiles/.utils/chars/* | wofi -i -L 10 --show dmenu --prompt "Unicode" | sed "s/ .*//")
+chosen=$(cut -d ';' -f1 ~/dotfiles/.utils/chars/* | wofi -i -L 10 --show dmenu --prompt "Unicode" --width 350 | sed "s/ .*//")
 
 # Exit if none chosen
 [ -z "$chosen" ] && exit
 
-wl-copy $chosen
+wl-copy "$chosen"
 notify-send "'$chosen' copied to clipboard."

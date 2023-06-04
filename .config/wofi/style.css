@@ -1,7 +1,5 @@
 window {
   background-color: rgba(0, 0, 0, 0.8);
-  /* background: transparent; */
-  /* background: transparent; */
   font-family: JetBrainsMono Nerd Font;
 }
 
@@ -13,15 +11,6 @@ window {
   /* background-color: blue; */
 }
 
-#inner-box {
-  /* border: 2px solid yellow; */
-  /* background-color: yellow; */
-}
-
-#outer-box {
-  /* border: 2px solid green; */
-  /* background-color: green; */
-}
 
 #scroll {
   margin: 5px;
@@ -35,13 +24,4 @@ window {
   font-weight: bold;
   /* border: 2px solid cyan; */
   /* background-color: cyan; */
-}
-
-#entry:selected {
-  /*background-color: rgba(0, 0, 0, 0);*/
-  /* text-decoration: underline; */
-  /* text-decoration-color: white; */
-}
-
-#text:selected {
 }
