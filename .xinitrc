@@ -33,7 +33,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
     unset f
 fi
 
-xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --setprovideroutputsource NVIDIA-G0 modesetting
 xrandr --auto
-# xrandr --output eDP --set TearFree on
+xrandr --output eDP-1 --set TearFree on
 exec dwm
