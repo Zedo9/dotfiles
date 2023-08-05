@@ -5,5 +5,5 @@ chosen=$(cliphist list | wofi -i -L 10 --show dmenu --prompt "Clipboard" | cliph
 # Exit if none chosen
 [ -z "$chosen" ] && exit
 
-wl-copy $chosen 
+wl-copy "$chosen"
 notify-send "Copied to clipboard."

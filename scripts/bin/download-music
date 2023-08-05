@@ -1,18 +1,18 @@
 #!/bin/bash
 links_file_path="$HOME/Music/links"
 
-links=`cat $links_file_path`
-array=( $links )
+links=$(cat $links_file_path)
+array=($links)
 output="$HOME/Music/output"
 
 if [ -d "$output" ]; then
     echo "Output directory exists"
 else
-    mkdir -p $output
+    mkdir -p "$output"
     echo "Created output directory"
 fi
 
-for link in ${!array[@]}; do
-    echo "$((link+1))/${#array[@]}"
-    yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 -o "$output/%(title)s.%(ext)s" ${array[$link]}
+for link in "${!array[@]}"; do
+    echo "$((link + 1))/${#array[@]}"
+    yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 -o "$output/%(title)s.%(ext)s" "${array[$link]}"
 done
