@@ -7,12 +7,11 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term wezterm
+set $term alacritty
 
-output eDP-1 scale 1
-
+output eDP-1 scale 1.25
 input "type:keyboard" {
-    xkb_layout "fr,ar"
+    xkb_layout "fr"
     xkb_numlock enable
     xkb_options grp:alt_shift_toggle
     repeat_delay 240
@@ -149,8 +148,8 @@ bindsym $mod+w exec firefox
 bindsym $mod+f exec thunar
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 2 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 2 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -171,9 +170,11 @@ bindsym XF86AudioPrev exec playerctl previous
 
 exec waybar -c ~/.config/waybar/config.sway &
 exec wlr-night-light &
+exec xsettingsd &
 exec dunst &
 exec nm-applet --indicator &
 exec wlr-wallpaper &
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec keyring &
 
 include /etc/sway/config.d/*
