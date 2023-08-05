@@ -1,6 +1,7 @@
 {
   "layer": "top",
   "spacing": 20,
+  "output": "eDP-1",
   "modules-left": [
     "wlr/workspaces",
     "hyprland/window"
@@ -28,7 +29,7 @@
       "4": "4",
       "5": "5",
       "urgent": "",
-      //"active": "",
+      // "active": "",
       "default": ""
     }
   },

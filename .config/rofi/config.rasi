@@ -1,7 +1,7 @@
 @theme "spotlight-dark"
 configuration {
 /*	modes: "window,drun,run,ssh";*/
-font: "MesloLGS Nerd Font 15";
+font: "JetBrainsMono Nerd Font 15";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
