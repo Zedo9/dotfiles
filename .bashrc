@@ -1,8 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export HISTFILE="${XDG_STATE_HOME}"/bash/history
-
 if [ -f ~/.config/shell/aliases ]; then
     . "$HOME"/.config/shell/aliases
 fi
@@ -22,8 +20,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+export HISTSIZE=1000
+export HISTFILESIZE=2000
 export HISTFILE="$XDG_STATE_HOME"/bash/history
 
 # check the window size after each command and, if necessary,
