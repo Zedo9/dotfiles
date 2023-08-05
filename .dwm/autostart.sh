@@ -1,5 +1,6 @@
 #!/bin/sh
 
+systemctl --user import-environment DISPLAY
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom -CGb
 numlockx on
@@ -17,10 +18,8 @@ x-wallpaper
 nm-applet &
 x-night-light &
 xsettingsd &
-# easyeffects --gapplication-service &
 keyring
-
-systemctl --user import-environment DISPLAY
-clipmenud &
 # Faster keyboard rate
 xset r rate 240 50
+
+clipmenud
