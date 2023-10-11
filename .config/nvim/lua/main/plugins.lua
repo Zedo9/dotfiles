@@ -14,21 +14,26 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	{ -- LSP Configuration & Plugins
+	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			-- Automatically install LSPs to stdpath for neovim
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-
-			-- Useful status updates for LSP
-			"j-hui/fidget.nvim",
 			"ray-x/lsp_signature.nvim",
 			-- Additional lua configuration, makes nvim stuff amazing
 			"folke/neodev.nvim",
 		},
 	},
-	"jose-elias-alvarez/null-ls.nvim",
+	{
+		"creativenull/efmls-configs-nvim",
+		version = "v1.x.x", -- version is optional, but recommended
+		dependencies = { "neovim/nvim-lspconfig" },
+	},
+	{
+		"j-hui/fidget.nvim",
+		tag = "legacy",
+		event = "LspAttach",
+	},
 	{
 		"nvim-tree/nvim-tree.lua",
 		lazy = false,
@@ -37,7 +42,7 @@ local plugins = {
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		},
 	},
-	{ -- Autocompletion
+	{
 		"hrsh7th/nvim-cmp",
 		dependencies = { "hrsh7th/cmp-nvim-lsp", "saadparwaiz1/cmp_luasnip" },
 	},
@@ -72,26 +77,12 @@ local plugins = {
 	-- Colorschemes
 	"luisiacc/gruvbox-baby",
 	"eddyekofo94/gruvbox-flat.nvim",
-	-- { 'jesseleite/nvim-noirbuddy', requires = { 'tjdevries/colorbuddy.nvim', branch = "dev" } },
-	-- 'martinsione/darkplus.nvim',
-
 	"nvim-lualine/lualine.nvim", -- Fancier statusline
-	{
-		"akinsho/bufferline.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-	},
-	{
-		"iamcco/markdown-preview.nvim",
-		build = "cd app && npm install",
-		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
-	},
-	"nvim-tree/nvim-web-devicons", -- Icons
-	"lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
-	"numToStr/Comment.nvim", -- "gc" to comment visual regions/lines
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+	'nanozuki/tabby.nvim',
+	"nvim-tree/nvim-web-devicons",
+	"numToStr/Comment.nvim",
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+	"tpope/vim-sleuth",
 
 	"norcalli/nvim-colorizer.lua",
 
@@ -119,4 +110,3 @@ local plugins = {
 local opts = {}
 
 require("lazy").setup(plugins, opts)
--- :checkhealth lazy

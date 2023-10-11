@@ -1,4 +1,4 @@
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
@@ -6,9 +6,22 @@ local on_attach = function(client, bufnr)
 
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
-	if client.name == "tsserver" or client.name == "lua_ls" then
-		client.server_capabilities.documentFormattingProvider = false
-	end
+
+	local lsp_fmt_group = vim.api.nvim_create_augroup("LspFormattingGroup", {})
+
+	vim.api.nvim_create_autocmd("BufWritePost", {
+		group = lsp_fmt_group,
+		callback = function()
+			local efm = vim.lsp.get_active_clients({ name = "efm" })
+
+			if vim.tbl_isempty(efm) then
+				vim.lsp.buf.format()
+			else
+				vim.lsp.buf.format({ name = "efm" })
+			end
+		end,
+	})
+
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
@@ -33,18 +46,25 @@ local on_attach = function(client, bufnr)
 	require("lsp_signature").on_attach({}, bufnr)
 	-- Create a command `:Format` local to the LSP buffer
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
-		vim.lsp.buf.format()
+		local efm = vim.lsp.get_active_clients({ name = "efm" })
+		if vim.tbl_isempty(efm) then
+			vim.lsp.buf.format()
+		else
+			vim.lsp.buf.format({ name = "efm" })
+		end
 	end, { desc = "Format current buffer with LSP" })
 	nmap("<leader>ff", ":Format<CR>", "[F]ormat [F]ile")
 end
 
 -- Enable the following language servers
 local servers = {
-	-- clangd = {},
-	-- gopls = {},
-	pyright = {},
-	-- rust_analyzer = {},
-	tsserver = {},
+	texlab = {
+		texlab = {
+			build = {
+				onSave = true,
+			},
+		},
+	},
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
@@ -79,3 +99,39 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 })
+
+-- local cspell = require("efmls-configs.linters.cspell")
+local prettier_d = require("efmls-configs.formatters.prettier_d")
+local latexindent = require("efmls-configs.formatters.latexindent")
+local eslint_d = require("efmls-configs.linters.eslint_d")
+local stylua = require("efmls-configs.formatters.stylua")
+local shellcheck = require("efmls-configs.linters.shellcheck")
+local shfmt = require("efmls-configs.formatters.shfmt")
+
+local languages = {
+	lua = { stylua },
+	tex = { latexindent },
+	yaml = { prettier_d },
+	html = { prettier_d },
+	css = { prettier_d },
+	sh = { shfmt, shellcheck },
+	javascript = { prettier_d, eslint_d },
+	typescript = { prettier_d, eslint_d },
+}
+
+local efmls_config = {
+	filetypes = vim.tbl_keys(languages),
+	settings = {
+		rootMarkers = { ".git/" },
+		languages = languages,
+	},
+	init_options = {
+		documentFormatting = true,
+		documentRangeFormatting = true,
+	},
+}
+
+require("lspconfig").efm.setup(vim.tbl_extend("force", efmls_config, {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}))
