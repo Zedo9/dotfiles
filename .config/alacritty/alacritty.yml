@@ -20,10 +20,10 @@ window:
     x: 2
     y: 0
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: true
+  dynamic_padding: false
 
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.9
+  opacity: 0.75
   # Window decorations
   # Values for `decorations`:
   #     - full: Borders and title bar
@@ -46,7 +46,7 @@ window:
   # Override the variant of the GTK theme.
   # Commonly supported values are `dark` and `light`.
   # Set this to `None` to use the default theme variant.
-  #gtk_theme_variant: None
+  # gtk_theme_variant: None
 
 scrolling:
   # Specifying '0' will disable scrolling.
@@ -58,17 +58,17 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: MesloLGM Nerd Font
-    style: Regular
+    family: JetBrainsMono Nerd Font
+    style: Medium
   bold:
-    family: MesloLGM Nerd Font
-    style: Bold
+    family: JetBrainsMono Nerd Font
+    style: SemiBold
   italic:
-    family: MesloLGM Nerd Font
-    style: Italic
+    family: JetBrainsMono Nerd Font
+    style: Medium Italic
   bold_italic:
-    family: MesloLGM Nerd Font
-    style: Bold Italic
+    family: JetBrainsMono Nerd Font
+    style: SemiBold Italic
 
   size: 18
 
@@ -130,7 +130,7 @@ cursor:
   #   - _ Underline
   #   - | Beam
   style:
-    shape: Beam
+    shape: Block
     blinking: Always
   blink_interval: 500
 

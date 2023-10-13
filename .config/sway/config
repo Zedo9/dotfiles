@@ -145,7 +145,7 @@ bindsym $mod+r mode "resize"
 
 # Apps 
 bindsym $mod+w exec firefox
-bindsym $mod+f exec thunar
+bindsym $mod+f exec nautilus
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
