@@ -1,0 +1,8 @@
+#!/bin/sh
+
+docker run -d --restart unless-stopped --log-opt max-size=10m \
+	-p 127.0.0.1:8080:80 \
+	-v freshrss_data:/var/www/FreshRSS/data \
+	-v freshrss_extensions:/var/www/FreshRSS/extensions \
+	--name freshrss \
+	freshrss/freshrss

@@ -1,4 +1,5 @@
 #!/bin/sh
 
 # grim -g "$(slurp)" - | wl-copy
-grim -g "$(slurp)" - | swappy -f -
+grim -g "$(slurp -c '#ff0000ff')" - | satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
+# grim -g "$(slurp)" - | swappy -f -
