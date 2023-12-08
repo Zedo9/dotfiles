@@ -1,5 +1,5 @@
 default_border none
-xwayland enable
+xwayland disable
 
 ### Variables
 set $mod Mod4
@@ -7,7 +7,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
+set $term foot
 
 output eDP-1 scale 1.25
 input "type:keyboard" {
@@ -37,7 +37,8 @@ bindsym $mod+Return exec $term
 # Kill focused window
 bindsym $mod+q kill
 # Wofi
-set $menu wofi --show drun --width 500 --allow-images
+set $menu rofi -show drun
+# set $menu wofi --show drun --width 500 --allow-images
 bindsym $mod+p exec $menu
 
 
@@ -47,7 +48,7 @@ floating_modifier $mod normal
 bindsym $mod+Shift+r reload
 
 # Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+q swaymsg exit
 
 # Moving around:
 bindsym $mod+$left focus left
@@ -157,24 +158,13 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# bar {
-#     position top
-#     status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-#     tray_output eDP-1
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
-#     }
-# }
-
 exec waybar -c ~/.config/waybar/config.sway &
 exec wlr-night-light &
-exec xsettingsd &
+# exec xsettingsd &
 exec dunst &
 exec nm-applet --indicator &
 exec wlr-wallpaper &
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec keyring &
+# exec keyring &
 
 include /etc/sway/config.d/*

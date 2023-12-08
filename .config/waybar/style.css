@@ -1,5 +1,5 @@
 * {
-  font-family: MesloLGM Nerd Font, FontAwesome, Roboto, Helvetica;
+  font-family: Roboto, FontAwesome, Roboto, Helvetica;
   font-size: 15px;
   min-height: 0;
   border: none;
@@ -22,11 +22,13 @@ tooltip label {
 #workspaces button {
   color: grey;
 }
-#workspaces button.active {
+#workspaces button.active,
+#workspaces button.focused {
   color: white;
 }
 
-#workspaces button.special {
+#workspaces button.special,
+#workspaces button.urgent {
   color: red;
 }
 
