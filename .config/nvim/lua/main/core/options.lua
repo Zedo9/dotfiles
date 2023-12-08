@@ -37,7 +37,7 @@ vim.o.expandtab = false
 vim.o.smartindent = true
 
 -- Decrease update time
-vim.o.updatetime = 2500
+vim.o.updatetime = 800
 vim.wo.signcolumn = "yes"
 vim.o.colorcolumn = "80"
 
@@ -58,7 +58,13 @@ vim.o.splitright = true
 -- highlight the current line
 vim.opt.cursorline = true
 
-vim.opt.conceallevel = 0       -- so that `` is visible in markdown files
+vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
-vim.opt.pumheight = 10         -- pop up menu height
--- vim.opt.showtabline = 2                         -- always show tabs
+vim.opt.pumheight = 10 -- pop up menu height
+vim.opt.showtabline = 2 -- always show tabs
+
+-- Indentation lines without a plugin
+-- Remember to adjust the leadmultispace according to your tab size
+-- like if you have 2 spaces as your indent length, set the leadmultispace to "| " with a single space instead of 3 spaces which I have for a 4 character tab size.
+vim.opt.list = true
+vim.opt.listchars = { leadmultispace = "│   ", multispace = "│ ", tab = "│ " }

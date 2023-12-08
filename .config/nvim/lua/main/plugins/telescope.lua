@@ -1,6 +1,5 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	-- branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -15,6 +14,27 @@ return {
 						["<C-u>"] = false,
 						["<C-d>"] = false,
 					},
+				},
+				file_ignore_patterns = {
+					".git/",
+				},
+				vimgrep_arguments = {
+					"rg",
+					"--color=never",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+					"--hidden",
+				},
+			},
+			pickers = {
+				find_files = {
+					hidden = true,
+				},
+				live_grep = {
+					hidden = true,
 				},
 			},
 		})

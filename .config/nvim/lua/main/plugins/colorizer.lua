@@ -1,4 +1,4 @@
 return {
-    "NvChad/nvim-colorizer.lua",
-    event = { "BufReadPre", "BufNewFile" },
+	"NvChad/nvim-colorizer.lua",
+	event = { "BufReadPre", "BufNewFile" },
 }
