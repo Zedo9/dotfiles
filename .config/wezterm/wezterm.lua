@@ -9,11 +9,18 @@ end
 config.font_size = 15
 config.term = "wezterm"
 
-config.font = wezterm.font("Cascadia Code", { weight = 450 })
--- config.font = wezterm.font("Monaco", { weight = 600 })
--- config.font = wezterm.font("Monaspace Radon", { weight = 500 })
+-- config.font = wezterm.font({
+-- 	family = "JetBrains Mono",
+-- 	-- weight = 450,
+-- 	-- harfbuzz_features = { "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "calt", "dlig" },
+-- })
 
-config.window_background_opacity = 0.8
+config.font = wezterm.font({
+	family = "Monaco",
+	weight = 600,
+})
+
+config.window_background_opacity = 0.85
 config.default_prog = { "/bin/zsh" }
 config.color_scheme = "Dark Pastel"
 config.tab_bar_at_bottom = true

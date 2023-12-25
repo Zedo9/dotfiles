@@ -23,7 +23,7 @@ window:
   dynamic_padding: false
 
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.75
+  opacity: 0.8
   # Window decorations
   # Values for `decorations`:
   #     - full: Borders and title bar
@@ -58,18 +58,18 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: Fira Code
-    style: Retina
+    family: Hack
+    style: Regular
   bold:
-    family: Fira Code
+    family: Hack
     style: Bold
   italic:
-    family: Fira Code
+    family: Hack
     style: Italic
   bold_italic:
-    family: Fira Code
+    family: Hack
     style: Bold Italic
-  size: 17
+  size: 15
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.

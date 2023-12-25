@@ -5,10 +5,10 @@ systemctl --user import-environment DISPLAY
 picom -CGb
 numlockx on
 export PATH="$PATH":"$HOME"/dotfiles/scripts/bin
-x-custom-gamma
+# x-custom-gamma
 playerctld daemon
 # For java apps to work
-wmname "LG3D" 
+wmname "LG3D"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 dwmblocks &
