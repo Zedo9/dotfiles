@@ -3,44 +3,21 @@
   "spacing": 10,
   "height": 29,
   "output": "eDP-1",
-  "modules-left": [
-    "hyprland/workspaces",
-    "hyprland/window",
-  ],
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": [],
   "modules-right": [
-    // "custom/swaync",
     "custom/netspeed",
-	"custom/brightness",
+    "backlight",
     "custom/cputemp",
     "battery",
     "clock#date",
     "clock#time",
+    "idle_inhibitor",
     "tray"
   ],
   "hyprland/window": {
     "format": "{}",
     "separate-outputs": true
-  },
-  "custom/swaync": {
-    "tooltip": false,
-    "format": "{icon} ",
-    "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
-      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-inhibited-none": ""
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-     "on-click-released": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
   },
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -55,21 +32,15 @@
       "urgent": "",
       // "active": "",
       "default": ""
-    },
-  },
-  "hyprland/submap": {
-    "format": "✌️ {}",
-    "max-length": 8,
-    "tooltip": false
+    }
   },
   "clock#time": {
-    "interval": 60,
-    "format": "{:%I:%M %p}"
+	"interval": 5,
+    "format": " {:%I:%M %p}",
   },
   "clock#date": {
-    "interval": 10,
-    "format": " {:%a %e %b %Y}",
-    "tooltip-format": "{:%a %e %B %Y}",
+	"interval": 60,
+    "format": " {:%a, %b %d, %Y}",
     "on-click": "gsimplecal"
   },
   "tray": {
@@ -84,14 +55,12 @@
   "custom/cputemp": {
     "format": "{}",
     "exec": "cputemp",
-    "interval": 1,
+    "interval": 2,
     "tooltip": false
   },
-	"custom/brightness": {
-    "format": "{}",
-    "exec": "brightness",
-    "interval": 60,
-    "tooltip": false
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["", ""]
   },
   "battery": {
     "interval": 60,
@@ -100,12 +69,13 @@
       "critical": 15
     },
     "format": "{icon}  {capacity}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "format-icons": ["", "", "", "", ""]
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
   }
 }
