@@ -4,7 +4,19 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
-		"L3MON4D3/LuaSnip",
+		"hrsh7th/cmp-calc",
+		{
+			"L3MON4D3/LuaSnip",
+			build = (function()
+				-- Build Step is needed for regex support in snippets
+				-- This step is not supported in many windows environments
+				-- Remove the below condition to re-enable on windows
+				if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
+					return
+				end
+				return "make install_jsregexp"
+			end)(),
+		},
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 		"onsails/lspkind.nvim",
@@ -14,12 +26,13 @@ return {
 
 		local luasnip = require("luasnip")
 
-		local lspkind = require("lspkind")
-
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
+			experimental = {
+				ghost_text = true,
+			},
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",
 			},
@@ -29,9 +42,12 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
+				["<C-n>"] = cmp.mapping.select_next_item(),
+				["<C-p>"] = cmp.mapping.select_prev_item(),
+				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+				["<C-Space>"] = cmp.mapping.complete({}),
 				["<C-d>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(),
 				["<CR>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
@@ -61,14 +77,8 @@ return {
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
+				{ name = "calc" },
 			}),
-			-- configure lspkind for vs-code like pictograms in completion menu
-			formatting = {
-				format = lspkind.cmp_format({
-					maxwidth = 50,
-					ellipsis_char = "...",
-				}),
-			},
 		})
 	end,
 }

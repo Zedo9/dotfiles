@@ -10,11 +10,14 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- Avoid overriding register when replacing with paste
+vim.keymap.set("x", "p", [["_dP]])
+
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 local opts = { noremap = true, silent = true }
 
@@ -46,7 +49,15 @@ vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 vim.keymap.set("n", "<C-s>", ":wa<CR>", opts)
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
--- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
--- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+-- Diagnostic keymaps
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- Tabs
+vim.api.nvim_set_keymap("n", "<leader>ta", ":$tabnew<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>to", ":tabonly<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tn", ":tabn<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tp", ":tabp<CR>", { noremap = true })

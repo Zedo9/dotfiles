@@ -3,57 +3,68 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		-- Update file imports on rename
 		"ray-x/lsp_signature.nvim",
-		-- "jmederosalvarado/roslyn.nvim",
+		"b0o/schemastore.nvim",
+		-- Mason
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+
+		{ "j-hui/fidget.nvim", opts = {} },
+		-- Update file imports on rename
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local on_attach = function(_, bufnr)
-			local nmap = function(keys, func, desc)
-				if desc then
-					desc = "LSP: " .. desc
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+			callback = function(event)
+				local map = function(keys, func, desc)
+					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
-				vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-			end
 
-			require("lsp_signature").on_attach({
-				bind = true, -- This is mandatory, otherwise border config won't get registered.
-				handler_opts = {
-					border = "rounded",
-				},
-			}, bufnr)
+				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+				map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+				map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 
-			local telescope_builtin = require("telescope.builtin")
+				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
-			nmap("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences")
-			nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-			nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-			nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
+				map("<leader>sd", require("telescope.builtin").diagnostics, "[S]earch [D]iagnostics")
+				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+				map("<F2>", vim.lsp.buf.rename, "[R]e[n]ame")
 
-			nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-			nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-			nmap("<leader>ds", telescope_builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
-			nmap("<leader>ws", telescope_builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-			nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-			nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
-			nmap("<leader>sd", telescope_builtin.diagnostics, "[S]earch [D]iagnostics")
-			nmap("<leader>fd", vim.diagnostic.open_float, "Show line diagnostics")
+				map("K", vim.lsp.buf.hover, "Hover Documentation")
 
-			-- Lesser used LSP functionality
-			-- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-			-- nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-			nmap("<leader>wl", function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			end, "[W]orkspace [L]ist Folders")
-		end
+				map("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+				vim.cmd([[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definition()<CR>]])
+				vim.cmd([[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<CR>]])
+
+				-- The following two autocommands are used to highlight references of the
+				-- word under your cursor when your cursor rests there for a little while.
+				-- When you move your cursor, the highlights will be cleared (the second autocommand).
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				if client and client.server_capabilities.documentHighlightProvider then
+					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+						buffer = event.buf,
+						callback = vim.lsp.buf.document_highlight,
+					})
+
+					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+						buffer = event.buf,
+						callback = vim.lsp.buf.clear_references,
+					})
+				end
+
+				if client and client.supports_method("textDocument/inlayHint") then
+					vim.lsp.inlay_hint.enable(event.buf, true)
+				end
+			end,
+		})
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-		-- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -62,130 +73,115 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-		lspconfig["emmet_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-		})
-
-		-- require("roslyn").setup({
-		-- 	on_attach = on_attach,
-		-- 	capabilities = capabilities,
-		-- })
-
-		-- lspconfig["csharp_ls"].setup({
-		-- 	capabilities = capabilities,
-		-- 	on_attach = on_attach,
-		-- })
-
-		local omnisharp_bin = "/home/zedo/.local/share/nvim/mason/packages/omnisharp/omnisharp"
-		lspconfig["omnisharp"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
-			-- Enables support for reading code style, naming convention and analyzer
-			-- settings from .editorconfig.
-			enable_editorconfig_support = true,
-
-			-- If true, MSBuild project system will only load projects for files that
-			-- were opened in the editor. This setting is useful for big C# codebases
-			-- and allows for faster initialization of code navigation features only
-			-- for projects that are relevant to code that is being edited. With this
-			-- setting enabled OmniSharp may load fewer projects and may thus display
-			-- incomplete reference lists for symbols.
-			enable_ms_build_load_projects_on_demand = false,
-
-			-- Enables support for roslyn analyzers, code fixes and rulesets.
-			enable_roslyn_analyzers = true,
-
-			-- Specifies whether 'using' directives should be grouped and sorted during
-			-- document formatting.
-			organize_imports_on_format = false,
-
-			-- Enables support for showing unimported types and unimported extension
-			-- methods in completion lists. When committed, the appropriate using
-			-- directive will be added at the top of the current file. This option can
-			-- have a negative impact on initial completion responsiveness,
-			-- particularly for the first few completion sessions after opening a
-			-- solution.
-			enable_import_completion = true,
-
-			-- Specifies whether to include preview versions of the .NET SDK when
-			-- determining which version to use for project loading.
-			sdk_include_prereleases = true,
-
-			-- Only run analyzers against open files when 'enableRoslynAnalyzers' is
-			-- true
-			analyze_open_documents_only = false,
-		})
-
-		lspconfig["yamlls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig["eslint"].setup({
-			capabilities = capabilities,
-			on_attach = function(client, bufnr)
-				on_attach(client, bufnr)
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					buffer = bufnr,
-					command = "EslintFixAll",
-				})
-			end,
-		})
-
-		lspconfig["tsserver"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig["bashls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig["tailwindcss"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig["astro"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig["texlab"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				texlab = {
-					build = {
-						onSave = true,
+		local servers = {
+			bashls = {},
+			dockerls = {},
+			tailwindcss = {},
+			astro = {},
+			texlab = {
+				settings = {
+					texlab = {
+						build = {
+							onSave = true,
+						},
 					},
 				},
 			},
-		})
+			-- gopls = {},
+			-- pyright = {},
+			-- rust_analyzer = {},
+			tsserver = {},
+			eslint = {
+				on_attach = function(client, bufnr)
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						buffer = bufnr,
+						command = "EslintFixAll",
+					})
+				end,
+			},
+			docker_compose_language_service = {},
+			omnisharp = {
+				enable_editorconfig_support = true,
+				enable_ms_build_load_projects_on_demand = false,
+				enable_roslyn_analyzers = true,
+				organize_imports_on_format = true,
+				enable_import_completion = true,
+				sdk_include_prereleases = true,
+				analyze_open_documents_only = false,
+			},
+			-- csharp_ls = {},
 
-		lspconfig["lua_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
+			emmet_ls = {
+				filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+			},
+
+			json_ls = {
+				settings = {
+					json = {
+						schemas = require("schemastore").json.schemas(),
+						validate = { enable = true },
 					},
-					workspace = {
-						checkThirdParty = false,
-						-- make language server aware of runtime files
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
-						},
-					},
-					telemetry = { enable = false },
 				},
+			},
+
+			yamlls = {
+				settings = {
+					yaml = {
+						schemaStore = {
+							-- You must disable built-in schemaStore support if you want to use
+							-- this plugin and its advanced options like `ignore`.
+							enable = false,
+							-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+							url = "",
+						},
+						schemas = require("schemastore").yaml.schemas(),
+					},
+				},
+			},
+
+			lua_ls = {
+				settings = {
+					Lua = {
+						runtime = { version = "LuaJIT" },
+						workspace = {
+							checkThirdParty = false,
+							-- Tells lua_ls where to find all the Lua files that you have loaded
+							-- for your neovim configuration.
+							library = {
+								"${3rd}/luv/library",
+								---@diagnostic disable-next-line: deprecated
+								unpack(vim.api.nvim_get_runtime_file("", true)),
+							},
+							-- If lua_ls is really slow on your computer, you can try this instead:
+							-- library = { vim.env.VIMRUNTIME },
+						},
+						completion = {
+							callSnippet = "Replace",
+						},
+						telemetry = { enable = false },
+					},
+				},
+			},
+		}
+
+		require("mason").setup()
+		require("mason-tool-installer").setup({
+			ensure_installed = {
+				"stylua",
+				"prettierd",
+				"shfmt",
+			},
+		})
+		require("mason-lspconfig").setup({
+			handlers = {
+				function(server_name)
+					local server = servers[server_name] or {}
+					-- This handles overriding only values explicitly passed
+					-- by the server configuration above. Useful when disabling
+					-- certain features of an LSP (for example, turning off formatting for tsserver)
+					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+					require("lspconfig")[server_name].setup(server)
+				end,
 			},
 		})
 	end,
