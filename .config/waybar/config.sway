@@ -1,50 +1,70 @@
 {
   "layer": "top",
-  "spacing": 20,
-  "modules-left": [
-    "sway/workspaces",
-    "sway/window"
-  ],
+  "spacing": 10,
+  "height": 29,
+  "output": "eDP-1",
+  "modules-left": ["sway/workspaces","sway/mode" ,"sway/window"],
   "modules-center": [],
   "modules-right": [
     "custom/netspeed",
-	"custom/brightness",
+    "backlight",
     "custom/cputemp",
     "battery",
     "clock#date",
     "clock#time",
+    "idle_inhibitor",
     "tray"
   ],
+  "sway/mode": {
+    "format": " {}",
+    "max-length": 50
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "separate-outputs": true
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "all-outputs": true,
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "urgent": "",
+      // "active": "",
+      "default": ""
+    }
+  },
   "clock#time": {
-    "interval": 60,
-    "format": "{:%I:%M %p}"
+	"interval": 5,
+    "format": " {:%I:%M %p}"
   },
   "clock#date": {
-    "interval": 10,
-    "format": " {:%a %e %b %Y}",
-    "tooltip-format": "{:%a %e %B %Y}",
+	"interval": 60,
+    "format": " {:%a, %b %d, %Y}",
     "on-click": "gsimplecal"
   },
   "tray": {
     "icon-size": 25,
-    "spacing": 5
+    "spacing": 4
   },
   "custom/netspeed": {
     "exec": "netspeed",
-    "interval": 2,
+    "interval": 3,
     "tooltip": false
   },
   "custom/cputemp": {
     "format": "{}",
     "exec": "cputemp",
-    "interval": 2,
+    "interval": 3,
     "tooltip": false
   },
-	"custom/brightness": {
-    "format": "{}",
-    "exec": "brightness",
-    "interval": 60,
-    "tooltip": false
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["", ""]
   },
   "battery": {
     "interval": 60,
@@ -53,12 +73,24 @@
       "critical": 15
     },
     "format": "{icon}  {capacity}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  }
+    "format-icons": ["", "", "", "", ""]
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+"wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18, 
+    "icon-theme": "Tela-circle-dark",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "rewrite": {
+        "Firefox Web Browser": "Firefox"
+    }
+}
 }

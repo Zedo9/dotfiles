@@ -75,40 +75,53 @@ return {
 
 		local servers = {
 			bashls = {},
-			dockerls = {},
-			tailwindcss = {},
-			astro = {},
-			texlab = {
-				settings = {
-					texlab = {
-						build = {
-							onSave = true,
-						},
-					},
-				},
-			},
+			-- dockerls = {},
+
+			-- tailwindcss = {},
+
+			-- astro = {},
+
+			-- texlab = {
+			-- 	settings = {
+			-- 		texlab = {
+			-- 			build = {
+			-- 				onSave = true,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
+
 			-- gopls = {},
-			-- pyright = {},
+			pyright = {
+				cmd = { "poetry", "run", "pyright-langserver", "--stdio" },
+				-- cmd = { "pipenv", "run", "pyright-langserver", "--stdio" },
+			},
+
 			-- rust_analyzer = {},
-			tsserver = {},
-			eslint = {
-				on_attach = function(client, bufnr)
-					vim.api.nvim_create_autocmd("BufWritePre", {
-						buffer = bufnr,
-						command = "EslintFixAll",
-					})
-				end,
-			},
-			docker_compose_language_service = {},
-			omnisharp = {
-				enable_editorconfig_support = true,
-				enable_ms_build_load_projects_on_demand = false,
-				enable_roslyn_analyzers = true,
-				organize_imports_on_format = true,
-				enable_import_completion = true,
-				sdk_include_prereleases = true,
-				analyze_open_documents_only = false,
-			},
+
+			-- tsserver = {},
+
+			-- eslint = {
+			-- 	on_attach = function(_, bufnr)
+			-- 		vim.api.nvim_create_autocmd("BufWritePre", {
+			-- 			buffer = bufnr,
+			-- 			command = "EslintFixAll",
+			-- 		})
+			-- 	end,
+			-- },
+
+			-- docker_compose_language_service = {},
+
+			-- omnisharp = {
+			-- 	enable_editorconfig_support = true,
+			-- 	enable_ms_build_load_projects_on_demand = false,
+			-- 	enable_roslyn_analyzers = true,
+			-- 	organize_imports_on_format = true,
+			-- 	enable_import_completion = true,
+			-- 	sdk_include_prereleases = true,
+			-- 	analyze_open_documents_only = false,
+			-- },
+
 			-- csharp_ls = {},
 
 			emmet_ls = {
