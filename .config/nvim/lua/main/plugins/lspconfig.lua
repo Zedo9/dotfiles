@@ -5,6 +5,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"ray-x/lsp_signature.nvim",
 		"b0o/schemastore.nvim",
+
 		-- Mason
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -26,7 +27,7 @@ return {
 				map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 				map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 
-				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+				-- map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
 				map("<leader>sd", require("telescope.builtin").diagnostics, "[S]earch [D]iagnostics")
@@ -57,9 +58,9 @@ return {
 					})
 				end
 
-				if client and client.supports_method("textDocument/inlayHint") then
-					vim.lsp.inlay_hint.enable(event.buf, true)
-				end
+				-- if client and client.supports_method("textDocument/inlayHint") then
+				-- 	vim.lsp.inlay_hint.enable(event.buf, true)
+				-- end
 			end,
 		})
 
@@ -92,23 +93,29 @@ return {
 			-- },
 
 			-- gopls = {},
-			pyright = {
-				cmd = { "poetry", "run", "pyright-langserver", "--stdio" },
-				-- cmd = { "pipenv", "run", "pyright-langserver", "--stdio" },
-			},
+			pyright = {},
 
 			-- rust_analyzer = {},
 
-			-- tsserver = {},
+			tsserver = {},
 
-			-- eslint = {
-			-- 	on_attach = function(_, bufnr)
-			-- 		vim.api.nvim_create_autocmd("BufWritePre", {
-			-- 			buffer = bufnr,
-			-- 			command = "EslintFixAll",
-			-- 		})
-			-- 	end,
-			-- },
+			eslint = {
+				filetypes = {
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+					"javascript",
+					"javascriptreact",
+					"javascript.jsx",
+				},
+				settings = {
+					codeActionOnSave = {
+						enable = true,
+						mode = "all",
+					},
+				},
+				single_file_support = true,
+			},
 
 			-- docker_compose_language_service = {},
 
@@ -125,7 +132,16 @@ return {
 			-- csharp_ls = {},
 
 			emmet_ls = {
-				filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+				filetypes = {
+					"html",
+					"typescriptreact",
+					"javascriptreact",
+					"css",
+					"sass",
+					"scss",
+					"less",
+					"svelte",
+				},
 			},
 
 			json_ls = {

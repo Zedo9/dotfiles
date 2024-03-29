@@ -1,18 +1,9 @@
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
 --Remap space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Avoid overriding register when replacing with paste
 vim.keymap.set("x", "p", [["_dP]])
-
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Remap for dealing with word wrap
