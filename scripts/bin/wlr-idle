@@ -1,6 +1,6 @@
 #!/bin/sh
 
 swayidle -w timeout 800 "wlr-lock-effects" \
-	timeout 1000 "hyprctl dispatch dpms off" \
+	timeout 1000 'swaymsg "output * power off"' \
 	timeout 1200 "systemctl suspend" \
-	resume "hyprctl dispatch dpms on"
+	resume 'swaymsg "output * power on"'
