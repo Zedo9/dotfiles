@@ -23,19 +23,19 @@ TERM = "xterm-256color"
 size = 15
 
 [font.bold]
-family = "MesloLGS NF" 
+family = "Fira Mono" 
 style = "Bold"
 
 [font.bold_italic]
-family = "MesloLGS NF" 
+family = "Fira Mono" 
 style = "Bold Italic"
 
 [font.italic]
-family = "MesloLGS NF" 
+family = "Fira Mono" 
 style = "Italic"
 
 [font.normal]
-family = "MesloLGS NF" 
+family = "Fira Mono" 
 style = "Regular"
 
 [font.glyph_offset]

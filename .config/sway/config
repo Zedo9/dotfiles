@@ -1,19 +1,20 @@
 default_border none
 xwayland disable
 
+font pango:Inter Regular 11
 ### Variables
 set $mod Mod4
 set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
 
 output eDP-1 scale 1.25
 input "type:keyboard" {
-    xkb_layout "fr"
+    xkb_layout fr
     xkb_numlock enable
-    xkb_options grp:alt_shift_toggle
+    xkb_variant azerty
+    # xkb_options
     repeat_delay 240
     repeat_rate 50
 }
@@ -25,22 +26,11 @@ input type:touchpad {
 }
 
 
-### Key bindings
-bindsym $mod+Return exec $term
-# Kill focused window
-bindsym $mod+q kill
-set $menu rofi -show drun
-bindsym $mod+p exec $menu
-bindsym $mod+n exec rofi -modi emoji -show emoji
-
-
 floating_modifier $mod normal
 
-# Reload the configuration file
 bindsym $mod+Shift+r reload
 
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+q "swaymsg exit"
+bindsym $mod+Shift+q exit
 
 # Moving around:
 bindsym $mod+$left focus left
@@ -103,7 +93,7 @@ bindsym $mod+Shift+agrave move container to workspace number $ws10
 
 # Layout stuff:
 bindsym $mod+b splith
-bindsym $mod+v splitv
+bindsym $mod+m splitv
 # Switch the current container between different layout styles
 bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
@@ -139,10 +129,17 @@ bindsym $mod+r mode "resize"
 # Apps 
 bindsym $mod+w exec firefox
 bindsym $mod+f exec thunar
+bindsym $mod+v exec rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons
+bindsym $mod+a exec wlr-screenshot
+bindsym $mod+Return exec alacritty
+bindsym $mod+p exec rofi -show drun
+bindsym $mod+n exec rofi -modi emoji -show emoji
+
+bindsym $mod+q kill
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -150,8 +147,7 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-bindsym $mod+a exec wlr-screenshot
-
+exec --no-startup-id dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec --no-startup-id waybar -c ~/.config/waybar/config.sway
 exec --no-startup-id wlr-night-light &
 exec --no-startup-id dunst

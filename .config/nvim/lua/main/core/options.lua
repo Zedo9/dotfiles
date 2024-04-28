@@ -20,6 +20,8 @@ vim.o.showmode = false
 -- Enable mouse mode
 vim.o.mouse = "a"
 
+vim.g.have_nerd_font = true
+
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -52,6 +54,9 @@ vim.o.completeopt = "menuone,noselect"
 vim.o.wrap = true
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
+
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.o.splitbelow = true
 vim.o.splitright = true

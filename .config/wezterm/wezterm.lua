@@ -13,8 +13,8 @@ config.term = "wezterm"
 
 config.front_end = "OpenGL"
 
-local family = "JetBrains Mono"
-local default_weight = "DemiBold"
+local family = "Monaspace Argon"
+local default_weight = 400
 
 config.font = wezterm.font({
 	family = family,

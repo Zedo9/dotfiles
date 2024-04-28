@@ -1,6 +1,6 @@
 @theme "spotlight-dark"
 configuration {
-modes: "window,drun,run,ssh,emoji";
+modes: "window,drun,run,ssh";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
@@ -14,7 +14,7 @@ show-icons: true;
 /*	run-shell-command: "{terminal} -e {cmd}";*/
 /*	window-command: "wmctrl -i -R {window}";*/
 /*	window-match-fields: "all";*/
-/* icon-theme: "Papirus-Dark"; */
+icon-theme: "Papirus-Dark";
 /*	drun-match-fields: "name,generic,exec,categories,keywords";*/
 /*	drun-categories: ;*/
 /*	drun-show-actions: false;*/

@@ -1,5 +1,9 @@
 * {
-  font-family: Roboto, FontAwesome, Roboto, Helvetica;
+  font-family:
+    Inter Display,
+    Roboto,
+    FontAwesome,
+    Helvetica;
   font-size: 15px;
   min-height: 0;
   border: none;
