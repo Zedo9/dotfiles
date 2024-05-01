@@ -1,9 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Use vi mode
-# set -o vi
-
 ### Aliases ###
 if [ -f ~/.config/shell/aliases ]; then
     . ~/.config/shell/aliases
@@ -77,8 +74,6 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 _dotnet_zsh_complete()
 {
@@ -97,6 +92,8 @@ _dotnet_zsh_complete()
 
 compdef _dotnet_zsh_complete dotnet
 
+. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 . /usr/share/fzf/key-bindings.zsh
 . /usr/share/fzf/completion.zsh
 . ~/.config/fzf/fzf.sh
