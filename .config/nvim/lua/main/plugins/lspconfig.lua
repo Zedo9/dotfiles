@@ -58,8 +58,9 @@ return {
 					})
 				end
 
+				vim.lsp.inlay_hint.enable(true, nil)
 				-- if client and client.supports_method("textDocument/inlayHint") then
-				-- 	vim.lsp.inlay_hint.enable(event.buf, true)
+				-- 	vim.lsp.inlay_hint.enable(true, nil)
 				-- end
 			end,
 		})
@@ -76,7 +77,7 @@ return {
 
 		local servers = {
 			bashls = {},
-			-- dockerls = {},
+			dockerls = {},
 
 			-- tailwindcss = {},
 
@@ -117,7 +118,7 @@ return {
 				single_file_support = true,
 			},
 
-			-- docker_compose_language_service = {},
+			docker_compose_language_service = {},
 
 			-- omnisharp = {
 			-- 	enable_editorconfig_support = true,
@@ -129,7 +130,7 @@ return {
 			-- 	analyze_open_documents_only = false,
 			-- },
 
-			-- csharp_ls = {},
+			csharp_ls = {},
 
 			emmet_ls = {
 				filetypes = {
