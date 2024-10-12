@@ -3,6 +3,9 @@ vim.o.hlsearch = true
 -- incremental search
 vim.o.incsearch = true
 
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = "split"
+
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.numberwidth = 4
@@ -31,32 +34,27 @@ vim.o.undofile = true
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
--- convert tabs to spaces
-vim.o.expandtab = true
-vim.o.smartindent = true
 
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
+
 vim.wo.signcolumn = "yes"
+
 vim.o.colorcolumn = "80"
 
--- allows neovim to access the system clipboard
-vim.o.clipboard = "unnamedplus"
+-- Sync clipboard between OS and Neovim.
+-- Schedule the setting after `UiEnter` because it can increase startup-time.
+vim.schedule(function()
+	vim.opt.clipboard = "unnamedplus"
+end)
 vim.o.termguicolors = true
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
-
 vim.o.wrap = true
-vim.o.scrolloff = 8
-vim.o.sidescrolloff = 8
+vim.o.scrolloff = 10
 
--- vim.opt.list = true
--- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.list = false
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -65,25 +63,7 @@ vim.o.splitright = true
 vim.opt.cursorline = true
 
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
-vim.opt.fileencoding = "utf-8" -- the encoding written to a file
-vim.opt.pumheight = 10 -- pop up menu height
 vim.opt.showtabline = 2 -- 2: Always | 1: Only when >1 tab | 0 : Never
 
--- Diagnostics config
-vim.diagnostic.config({
-	-- virtual_text = false,
-	virtual_text = {
-		prefix = "●", -- Could be '●', '▎', 'x'
-		source = true,
-		severity = vim.diagnostic.severity.ERROR,
-	},
-	update_in_insert = false,
-	severity_sort = true,
-	float = {
-		border = "rounded",
-		source = true,
-	},
-	underline = {
-		severity = vim.diagnostic.severity.ERROR,
-	},
-})
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.tabstop = 4 -- Number of spaces tabs count for

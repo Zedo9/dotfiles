@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
+	main = "nvim-treesitter.configs", -- Sets main module to use for opts
 	opts = {
 		ensure_installed = { "lua" },
 		auto_install = true,
@@ -19,7 +20,4 @@ return {
 			},
 		},
 	},
-	config = function(_, opts)
-		require("nvim-treesitter.configs").setup(opts)
-	end,
 }
