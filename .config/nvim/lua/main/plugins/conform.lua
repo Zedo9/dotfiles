@@ -37,7 +37,7 @@ return {
 			["astro"] = { { "prettierd", "prettier" } },
 			["lua"] = { "stylua" },
 			["tex"] = { "latexindent" },
-			["sh"] = { "shfmt" },
+			["sh"] = { "shfmt", "shellcheck" },
 			["cs"] = { "csharpier" },
 		},
 		format_on_save = function(bufnr)

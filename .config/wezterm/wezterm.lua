@@ -13,45 +13,13 @@ config.term = "wezterm"
 
 config.front_end = "OpenGL"
 
-local family = "Monaspace Argon"
-local default_weight = 400
+local family = "FiraCode Nerd Font"
+local default_weight = 450
 
 config.font = wezterm.font({
 	family = family,
 	weight = default_weight,
 })
-
-config.font_rules = {
-	{
-		intensity = "Normal",
-		italic = true,
-		font = wezterm.font({
-			family = family,
-			weight = default_weight,
-			style = "Italic",
-		}),
-	},
-	{
-		intensity = "Bold",
-		italic = false,
-		font = wezterm.font({
-			family = family,
-			weight = "ExtraBold",
-			style = "Normal",
-		}),
-	},
-}
-
--- config.font = wezterm.font({
--- 	family = "Monaspace Radon", -- Radon, Xenon, Krypton, Argon, Neon
--- 	weight = 500,
--- 	harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
--- })
-
--- config.font = wezterm.font({
--- 	family = "Monaco",
--- 	weight = 600,
--- })
 
 config.window_background_opacity = 0.85
 config.default_prog = { "/bin/zsh" }

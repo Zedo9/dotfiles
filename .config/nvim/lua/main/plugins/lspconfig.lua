@@ -3,7 +3,6 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		"ray-x/lsp_signature.nvim",
 		"b0o/schemastore.nvim",
 
 		-- Mason
@@ -23,14 +22,13 @@ return {
 					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
-				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-				map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-				map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+				map("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
+				map("gr", require("telescope.builtin").lsp_references, "Goto References")
+				map("gI", require("telescope.builtin").lsp_implementations, "Goto Implementation")
 
-				-- map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace Symbols")
 
-				map("<leader>sd", require("telescope.builtin").diagnostics, "[S]earch [D]iagnostics")
+				map("<leader>sd", require("telescope.builtin").diagnostics, "Search Diagnostics")
 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 				map("<F2>", vim.lsp.buf.rename, "[R]e[n]ame")
 
@@ -58,10 +56,24 @@ return {
 					})
 				end
 
-				vim.lsp.inlay_hint.enable(true, nil)
-				-- if client and client.supports_method("textDocument/inlayHint") then
-				-- 	vim.lsp.inlay_hint.enable(true, nil)
-				-- end
+				-- Enable inlay hints for the current buffer
+				if client and client.server_capabilities.inlayHintProvider then
+					vim.lsp.inlay_hint.enable(true)
+				end
+
+				-- Disable Treesitter if LSP is enough or file too large
+				local id = event.data.client_id
+
+				local client = vim.lsp.get_client_by_id(id) or nil
+				local has_full_semantic_tokens = client
+					and client.server_capabilities.semanticTokensProvider
+					and client.server_capabilities.semanticTokensProvider.full
+
+				if has_full_semantic_tokens or vim.api.nvim_buf_line_count(event.buf) > 10000 then
+					vim.cmd([[TSBufDisable highlight]])
+				else
+					vim.cmd([[TSBufEnable highlight]])
+				end
 			end,
 		})
 
@@ -98,6 +110,7 @@ return {
 
 			-- rust_analyzer = {},
 
+			typos_lsp = {},
 			tsserver = {},
 
 			eslint = {

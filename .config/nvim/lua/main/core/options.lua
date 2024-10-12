@@ -68,3 +68,22 @@ vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
 vim.opt.pumheight = 10 -- pop up menu height
 vim.opt.showtabline = 2 -- 2: Always | 1: Only when >1 tab | 0 : Never
+
+-- Diagnostics config
+vim.diagnostic.config({
+	-- virtual_text = false,
+	virtual_text = {
+		prefix = "●", -- Could be '●', '▎', 'x'
+		source = true,
+		severity = vim.diagnostic.severity.ERROR,
+	},
+	update_in_insert = false,
+	severity_sort = true,
+	float = {
+		border = "rounded",
+		source = true,
+	},
+	underline = {
+		severity = vim.diagnostic.severity.ERROR,
+	},
+})
