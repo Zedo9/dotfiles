@@ -1,7 +1,7 @@
 #!/bin/sh
 
-path=$HOME/.local/share/location.txt
+gamma_correction=1.0
 
-[ ! -f path ] && get-location
+/usr/lib/geoclue-2.0/demos/agent &
 
-/usr/bin/gammastep-indicator -t 6500:4500 -l "$(cat "$path")" -g 0.9:0.9:0.9
+/usr/bin/gammastep-indicator -t 6500:4500 -l geoclue2 -g ${gamma_correction}:${gamma_correction}:${gamma_correction}

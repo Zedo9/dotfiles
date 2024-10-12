@@ -1,5 +1,5 @@
 #!/bin/sh
 
-location_dir=~/.local/share/location.json
+/usr/lib/geoclue-2.0/demos/agent &
 
-redshift-gtk -l "$(cat $location_dir | jq -r '"\(.location.lat):\(.location.lng)"')" -t 6500:2700
+redshift-gtk -t 6500:4500

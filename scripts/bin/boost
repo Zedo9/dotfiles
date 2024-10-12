@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Exit on error
+set -e
+
+# Function to turn boost off
+turn_boost_off() {
+    echo "0" | sudo tee /sys/devices/system/cpu/cpufreq/boost
+    echo "CPU boost turned off."
+}
+
+# Function to turn boost on
+turn_boost_on() {
+    echo "1" | sudo tee /sys/devices/system/cpu/cpufreq/boost
+    echo "CPU boost turned on."
+}
+
+# Check the input argument
+case "$1" in
+off)
+    turn_boost_off
+    ;;
+on)
+    turn_boost_on
+    ;;
+*)
+    echo "Usage: $0 {on|off}"
+    exit 1
+    ;;
+esac
