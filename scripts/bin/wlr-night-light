@@ -4,4 +4,4 @@ gamma_correction=1.0
 
 /usr/lib/geoclue-2.0/demos/agent &
 
-/usr/bin/gammastep-indicator -t 6500:4500 -l geoclue2 -g ${gamma_correction}:${gamma_correction}:${gamma_correction}
+/usr/bin/gammastep-indicator -t 6500:4000 -l geoclue2 -g ${gamma_correction}:${gamma_correction}:${gamma_correction}
