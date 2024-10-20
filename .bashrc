@@ -1,19 +1,20 @@
+#!/bin/bash
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 if [ -f ~/.config/shell/aliases ]; then
-	. "$HOME"/.config/shell/aliases
+    . "$HOME"/.config/shell/aliases
 fi
 
 if [ -f ~/.config/shell/shellenv ]; then
-	. "$HOME"/.config/shell/shellenv
+    . "$HOME"/.config/shell/shellenv
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
@@ -41,13 +42,20 @@ export force_color_prompt=yes
 # 	fi
 # fi
 
-. /usr/share/fzf/key-bindings.bash
-. /usr/share/fzf/completion.bash
-. "$HOME"/.config/fzf/fzf.sh
-
-# NVM
 export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+plugin_files=(
+    # fzf
+    /usr/share/fzf/key-bindings.bash
+    /usr/share/fzf/completion.bash
+    ~/.config/fzf/fzf.sh
+    # nvm
+    "$NVM_DIR/nvm.sh"
+    "$NVM_DIR/bash_completion"
+)
+
+for plugin_file in "${plugin_files[@]}"; do
+    # shellcheck source=/dev/null
+    [ -f "$plugin_file" ] && source "$plugin_file"
+done
 
 eval "$(starship init bash)"
