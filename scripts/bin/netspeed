@@ -2,16 +2,43 @@
 
 interface='wlp4s0'
 
+# Function to convert bytes per second to human-readable format
+convert_bytes() {
+    local bytes=$1
+    local unit="B/s"
+    if [ "$bytes" -ge 1099511627776 ]; then
+        unit="TB/s"
+        value=$(echo "scale=1; $bytes / 1099511627776" | bc)
+    elif [ "$bytes" -ge 1073741824 ]; then
+        unit="GB/s"
+        value=$(echo "scale=1; $bytes / 1073741824" | bc)
+    elif [ "$bytes" -ge 1048576 ]; then
+        unit="MB/s"
+        value=$(echo "scale=1; $bytes / 1048576" | bc)
+    elif [ "$bytes" -ge 1024 ]; then
+        unit="KB/s"
+        value=$(echo "scale=1; $bytes / 1024" | bc)
+    else
+        value=$bytes
+    fi
+    echo "$value $unit"
+}
+
+# Get the initial bytes transmitted and received
 R1=$(cat "/sys/class/net/$interface/statistics/rx_bytes")
 T1=$(cat "/sys/class/net/$interface/statistics/tx_bytes")
 sleep 1
+# Get the bytes transmitted and received after 1 second
 R2=$(cat "/sys/class/net/$interface/statistics/rx_bytes")
 T2=$(cat "/sys/class/net/$interface/statistics/tx_bytes")
 
-TBPS=$((T2 - T1))
+# Calculate bytes per second
 RBPS=$((R2 - R1))
+TBPS=$((T2 - T1))
 
-TKBPS=$((TBPS / 1024))
-RKBPS=$((RBPS / 1024))
+# Convert to human-readable format
+R_speed=$(convert_bytes $RBPS)
+T_speed=$(convert_bytes $TBPS)
 
-echo "↓ $RKBPS kB/s ↑ $TKBPS kB/s"
+# Output the speeds
+echo "↓ $R_speed ↑ $T_speed"
