@@ -1,0 +1,25 @@
+{
+  "include": ["~/.config/waybar/base.jsonc"],
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+  "sway/mode": {
+    "format": " {}",
+    "max-length": 50
+  },
+  "sway/window": {
+    "format": "{}",
+    "separate-outputs": true,
+    "icon": true,
+    "icon-size": 17
+  },
+  "sway/workspaces": {
+    "format": "{index} {icon}",
+    "all-outputs": true,
+    "format-icons": {
+      "urgent": "",
+      //   "focused": "",
+      //   "default": ""
+      "default": "",
+      "focused": ""
+    }
+  }
+}

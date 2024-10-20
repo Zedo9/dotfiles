@@ -1,0 +1,27 @@
+{
+  "include": ["~/.config/waybar/base.jsonc"],
+  "modules-left": ["hyprland/workspaces", "hyprland/submap", "hyprland/window"],
+  "hyprland/window": {
+    "format": "{initialTitle}",
+    "separate-outputs": true,
+    "icon": true,
+    "icon-size": 17
+  },
+  "hyprland/submap": {
+    "format": "✌️ {}",
+    "max-length": 8,
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "format": "{id} {icon}",
+    "all-outputs": true,
+    "active-only": false,
+    "format-icons": {
+      "urgent": "",
+      //   "active": "",
+      //   "default": ""
+      "default": "",
+      "active": ""
+    }
+  }
+}

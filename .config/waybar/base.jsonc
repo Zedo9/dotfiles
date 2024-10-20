@@ -1,49 +1,26 @@
 {
   "layer": "top",
-  "spacing": 10,
-  "height": 29,
+  "spacing": 8,
   "output": "eDP-1",
-  "modules-left": ["sway/workspaces","sway/mode" ,"sway/window"],
-  "modules-center": [],
   "modules-right": [
     "custom/netspeed",
-    "backlight",
     "custom/cputemp",
-    "battery",
     "clock#date",
     "clock#time",
+    "backlight",
+    "battery",
+    "power-profiles-daemon",
     "idle_inhibitor",
+    "privacy",
     "tray"
   ],
-  "sway/mode": {
-    "format": " {}",
-    "max-length": 50
-  },
-  "hyprland/window": {
-    "format": "{}",
-    "separate-outputs": true
-  },
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "on-click": "activate",
-    "all-outputs": true,
-    "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "urgent": "",
-      // "active": "",
-      "default": ""
-    }
-  },
+  "modules-center": [],
   "clock#time": {
-	"interval": 5,
+    "interval": 5,
     "format": " {:%I:%M %p}"
   },
   "clock#date": {
-	"interval": 60,
+    "interval": 60,
     "format": " {:%a, %b %d, %Y}",
     "on-click": "gsimplecal"
   },
@@ -63,7 +40,7 @@
     "tooltip": false
   },
   "backlight": {
-    "on-scroll-up":   "brightnessctl s 1%+",
+    "on-scroll-up": "brightnessctl s 1%+",
     "on-scroll-down": "brightnessctl s 1%-",
     "format": "{icon} {percent}%",
     "format-icons": ["", ""]
@@ -79,20 +56,43 @@
   },
   "idle_inhibitor": {
     "format": "{icon}",
+    "start-activated": true,
     "format-icons": {
       "activated": "",
       "deactivated": ""
     }
   },
-"wlr/taskbar": {
+  "privacy": {
+    "icon-spacing": 4,
+    "icon-size": 14,
+    "transition-duration": 250,
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 17
+      },
+      {
+        "type": "audio-out",
+        "tooltip": true,
+        "tooltip-icon-size": 17
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 17
+      }
+    ]
+  },
+  "power-profiles-daemon": {
     "format": "{icon}",
-    "icon-size": 18, 
-    "icon-theme": "Tela-circle-dark",
-    "tooltip-format": "{title}",
-    "on-click": "activate",
-    "on-click-middle": "close",
-    "rewrite": {
-        "Firefox Web Browser": "Firefox"
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
     }
-}
+  }
 }
