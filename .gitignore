@@ -1,8 +1,1 @@
-bin/music_download/output/**
-.config/nvim/plugged
-.config/nvim/.netrwhist
-.config/qtile/__pycache__
-*.log
-nvim.backup
-*/**/nvim/plugin
-.config/nvim/lazy-lock.json
+
