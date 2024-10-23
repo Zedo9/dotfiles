@@ -4,11 +4,11 @@
 [[ $- != *i* ]] && return
 
 if [ -f ~/.config/shell/aliases ]; then
-    . "$HOME"/.config/shell/aliases
+	source "$HOME"/.config/shell/aliases
 fi
 
 if [ -f ~/.config/shell/shellenv ]; then
-    . "$HOME"/.config/shell/shellenv
+	source "$HOME"/.config/shell/shellenv
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -44,18 +44,18 @@ export force_color_prompt=yes
 
 export NVM_DIR="$HOME/.config/nvm"
 plugin_files=(
-    # fzf
-    /usr/share/fzf/key-bindings.bash
-    /usr/share/fzf/completion.bash
-    ~/.config/fzf/fzf.sh
-    # nvm
-    "$NVM_DIR/nvm.sh"
-    "$NVM_DIR/bash_completion"
+	# fzf
+	/usr/share/fzf/key-bindings.bash
+	/usr/share/fzf/completion.bash
+	~/.config/fzf/fzf.sh
+	# nvm
+	"$NVM_DIR/nvm.sh"
+	"$NVM_DIR/bash_completion"
 )
 
 for plugin_file in "${plugin_files[@]}"; do
-    # shellcheck source=/dev/null
-    [ -f "$plugin_file" ] && source "$plugin_file"
+	# shellcheck source=/dev/null
+	[ -f "$plugin_file" ] && source "$plugin_file"
 done
 
 eval "$(starship init bash)"

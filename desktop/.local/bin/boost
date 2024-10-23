@@ -1,17 +1,23 @@
-#!/bin/bash
+#!/bin/sh
 
 # Exit on error
 set -e
 
+path="/sys/devices/system/cpu/cpu*/cpufreq/boost"
+
 # Function to turn boost off
 turn_boost_off() {
-    echo "0" | sudo tee /sys/devices/system/cpu/cpufreq/boost
+    for p in $path; do
+        echo "0" | sudo tee "$p" >/dev/null
+    done
     echo "CPU boost turned off."
 }
 
 # Function to turn boost on
 turn_boost_on() {
-    echo "1" | sudo tee /sys/devices/system/cpu/cpufreq/boost
+    for p in $path; do
+        echo "1" | sudo tee "$p" >/dev/null
+    done
     echo "CPU boost turned on."
 }
 

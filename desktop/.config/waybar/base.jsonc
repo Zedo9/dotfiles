@@ -12,55 +12,55 @@
     "power-profiles-daemon",
     "idle_inhibitor",
     "privacy",
-    "tray"
+    "tray",
   ],
   "modules-center": [],
   "clock#time": {
     "interval": 5,
-    "format": " {:%I:%M %p}"
+    "format": " {:%I:%M %p}",
   },
   "clock#date": {
     "interval": 60,
     "format": " {:%a, %b %d, %Y}",
-    "on-click": "gsimplecal"
+    "on-click": "gsimplecal",
   },
   "tray": {
     "icon-size": 17,
-    "spacing": 4
+    "spacing": 4,
   },
   "custom/netspeed": {
     "exec": "netspeed",
     "interval": 3,
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/cputemp": {
     "format": "{}",
     "exec": "cputemp",
     "interval": 3,
-    "tooltip": false
+    "tooltip": false,
   },
   "backlight": {
     "on-scroll-up": "brightnessctl s 1%+",
     "on-scroll-down": "brightnessctl s 1%-",
     "format": "{icon} {percent}%",
-    "format-icons": ["", ""]
+    "format-icons": ["", ""],
   },
   "battery": {
     "interval": 60,
     "states": {
       "warning": 25,
-      "critical": 15
+      "critical": 15,
     },
     "format": "{icon}  {capacity}%",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": ["", "", "", "", ""],
   },
   "idle_inhibitor": {
     "format": "{icon}",
     "start-activated": true,
     "format-icons": {
       "activated": "",
-      "deactivated": ""
-    }
+      "deactivated": "",
+    },
   },
   "privacy": {
     "icon-spacing": 4,
@@ -70,19 +70,19 @@
       {
         "type": "screenshare",
         "tooltip": true,
-        "tooltip-icon-size": 17
+        "tooltip-icon-size": 17,
       },
       {
         "type": "audio-out",
         "tooltip": true,
-        "tooltip-icon-size": 17
+        "tooltip-icon-size": 17,
       },
       {
         "type": "audio-in",
         "tooltip": true,
-        "tooltip-icon-size": 17
-      }
-    ]
+        "tooltip-icon-size": 17,
+      },
+    ],
   },
   "power-profiles-daemon": {
     "format": "{icon}",
@@ -92,7 +92,7 @@
       "default": "",
       "performance": "",
       "balanced": "",
-      "power-saver": ""
-    }
-  }
+      "power-saver": "",
+    },
+  },
 }
