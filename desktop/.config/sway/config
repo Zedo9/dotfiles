@@ -15,7 +15,7 @@ input "type:keyboard" {
     xkb_variant azerty
     # xkb_options
     repeat_delay 240
-    repeat_rate 50
+    repeat_rate 75
 }
 
 input type:touchpad {
