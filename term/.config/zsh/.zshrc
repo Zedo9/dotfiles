@@ -16,6 +16,7 @@ zstyle ':completion:*' menu select
 
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
 setopt inc_append_history
+setopt share_history # Useful for tmux
 export HISTSIZE=1000
 export SAVEHIST=1000
 
@@ -93,6 +94,8 @@ plugin_files=(
     # nvm
     "$NVM_DIR/nvm.sh"
     "$NVM_DIR/bash_completion"
+    # Rust
+    "~/.local/share/cargo/env"
 )
 
 for plugin_file in "${plugin_files[@]}"; do

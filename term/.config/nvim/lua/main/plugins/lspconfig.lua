@@ -1,7 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
+		"saghen/blink.cmp",
 		"b0o/schemastore.nvim",
 
 		-- Mason
@@ -12,6 +12,19 @@ return {
 		{ "j-hui/fidget.nvim", opts = {} },
 		-- Update file imports on rename
 		{ "antosha417/nvim-lsp-file-operations", config = true },
+
+		-- neovim completions
+		{
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
+			opts = {
+				library = {
+					-- See the configuration section for more details
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -75,22 +88,10 @@ return {
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 					end, "[T]oggle Inlay [H]ints")
 				end
-
-				-- Disable Treesitter if LSP is good enough or file too large
-				local has_full_semantic_tokens = client
-					and client.server_capabilities.semanticTokensProvider
-					and client.server_capabilities.semanticTokensProvider.full
-
-				if has_full_semantic_tokens or vim.api.nvim_buf_line_count(event.buf) > 5000 then
-					vim.cmd([[TSBufDisable highlight]])
-				else
-					vim.cmd([[TSBufEnable highlight]])
-				end
 			end,
 		})
 
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -102,6 +103,7 @@ return {
 		local servers = {
 			bashls = {},
 			dockerls = {},
+			rust_analyzer = {},
 
 			-- tailwindcss = {},
 
@@ -155,7 +157,7 @@ return {
 			-- 	analyze_open_documents_only = false,
 			-- },
 
-			csharp_ls = {},
+			-- csharp_ls = {},
 
 			emmet_ls = {
 				filetypes = {
@@ -200,15 +202,6 @@ return {
 						runtime = { version = "LuaJIT" },
 						workspace = {
 							checkThirdParty = false,
-							-- Tells lua_ls where to find all the Lua files that you have loaded
-							-- for your neovim configuration.
-							library = {
-								"${3rd}/luv/library",
-								---@diagnostic disable-next-line: deprecated
-								unpack(vim.api.nvim_get_runtime_file("", true)),
-							},
-							-- If lua_ls is really slow on your computer, you can try this instead:
-							-- library = { vim.env.VIMRUNTIME },
 						},
 						completion = {
 							callSnippet = "Replace",
@@ -228,6 +221,8 @@ return {
 			},
 		})
 		require("mason-lspconfig").setup({
+			ensure_installed = {},
+			automatic_installation = false,
 			handlers = {
 				function(server_name)
 					local server = servers[server_name] or {}
