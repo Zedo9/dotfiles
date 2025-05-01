@@ -10,7 +10,7 @@ You need to have `git` and `stow` installed.
 1. Run `stow` to symlink everything or just select what you want
 
 ```sh
-stow *
+stow */
 ```
 
 ```sh
