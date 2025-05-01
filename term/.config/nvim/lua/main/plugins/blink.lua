@@ -17,14 +17,14 @@ return {
 		keymap = {
 			preset = "default",
 			-- Keep both default and enter-like approach
-			["<CR>"] = { "accept", "fallback" },
+			-- ["<CR>"] = { "accept", "fallback" },
 			["<Tab>"] = {
 				function(cmp)
 					if cmp.snippet_active() then
 						return cmp.accept()
-					else
-						return cmp.select_and_accept()
 					end
+
+					return cmp.select_and_accept()
 				end,
 				"snippet_forward",
 				"fallback",

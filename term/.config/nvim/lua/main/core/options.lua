@@ -63,7 +63,7 @@ vim.o.splitright = true
 vim.opt.cursorline = true
 
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
-vim.opt.showtabline = 2 -- 2: Always | 1: Only when >1 tab | 0 : Never
+vim.opt.showtabline = 1 -- 2: Always | 1: Only when >1 tab | 0 : Never
 
 vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.tabstop = 4 -- Number of spaces tabs count for
