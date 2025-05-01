@@ -1,5 +1,5 @@
 default_border none
-xwayland disable
+xwayland enable
 
 font pango:Inter Regular 11
 set $mod Mod4
@@ -130,13 +130,13 @@ bindsym $mod+w exec firefox
 bindsym $mod+f exec nautilus
 bindsym $mod+v exec rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons
 bindsym $mod+a exec wlr-screenshot
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec ghostty
 bindsym $mod+p exec killall rofi || rofi -show drun
 bindsym $mod+comma exec rofimoji
 
 bindsym $mod+q kill
 
-# Sreen brightness controls
+# Screen brightness controls
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
@@ -147,12 +147,12 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 exec --no-startup-id waybar -c ~/.config/waybar/config.sway.jsonc
-exec --no-startup-id wlr-night-light
 exec --no-startup-id dunst
 exec --no-startup-id wlr-idle
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id wlr-wallpaper
 exec --no-startup-id cliphist wipe && wl-paste --watch cliphist store
-# exec --no-startup-id blueman-applet
+exec --no-startup-id wlr-night-light
+exec --no-startup-id blueman-applet
 
 include /etc/sway/config.d/*
