@@ -4,17 +4,13 @@ This repository contains the dotfiles I use on my personal system. Dotfiles incl
 
 ## How to install
 
-You need to have `git` and `stow` installed.
+You need to have `git` installed.
 
 1. Clone into your home directory
-1. Run `stow` to symlink everything or just select what you want
+1. Setup the needed parts
 
 ```sh
-stow */
-```
-
-```sh
-stow term # Just for shell related configuration (zsh, bash, nvim, tmux...)
+./setup.sh [desktop] [term] [xorg] ...
 ```
 
 _Be aware that these files are often a work in progress so I make no guarantees about how well they will work for you._
