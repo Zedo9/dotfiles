@@ -7,12 +7,11 @@ for file in ~/.config/shell/{aliases,shellenv}; do
     [[ -f $file ]] && source "$file"
 done
 
-autoload -Uz colors && colors 
-autoload -Uz compinit && 
-compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
-_comp_options+=(globdots) # Include hidden files.
+autoload -Uz colors && colors
 
+_comp_options+=(globdots) # Include hidden files.
 zstyle ':completion:*' menu select
+autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
 setopt inc_append_history
@@ -97,12 +96,12 @@ for plugin_file in "${plugin_files[@]}"; do
     [[ -f "$plugin_file" ]] && source "$plugin_file"
 done
 
-FNM_PATH="/home/zedo/.local/share/fnm"
+# fnm
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-    export PATH="/home/zedo/.local/share/fnm:$PATH"
+    export PATH="$FNM_PATH:$PATH"
     eval "$(fnm env --use-on-cd)"
 fi
-
 
 # pnpm
 export PNPM_HOME="/home/zedo/.local/share/pnpm"
@@ -110,6 +109,11 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
+
+# uv
+if [ -f "$HOME/.local/bin/env" ]; then
+    . "$HOME/.local/bin/env"
+    eval "$(uv generate-shell-completion zsh)"
+fi
 
 eval "$(starship init zsh)"
