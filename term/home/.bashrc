@@ -42,15 +42,11 @@ export force_color_prompt=yes
 # 	fi
 # fi
 
-export NVM_DIR="$HOME/.config/nvm"
 plugin_files=(
     # fzf
     /usr/share/fzf/key-bindings.bash
     /usr/share/fzf/completion.bash
     ~/.config/fzf/fzf.sh
-    # nvm
-    "$NVM_DIR/nvm.sh"
-    "$NVM_DIR/bash_completion"
 )
 
 for plugin_file in "${plugin_files[@]}"; do

@@ -7,8 +7,8 @@ for file in ~/.config/shell/{aliases,shellenv}; do
     [[ -f $file ]] && source "$file"
 done
 
-autoload -Uz colors compinit
-colors
+autoload -Uz colors && colors 
+autoload -Uz compinit && 
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 _comp_options+=(globdots) # Include hidden files.
 
@@ -81,8 +81,6 @@ _dotnet_zsh_complete()
 }
 compdef _dotnet_zsh_complete dotnet
 
-export NVM_DIR="$HOME/.config/nvm"
-
 plugin_files=(
     # zsh
     /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -91,9 +89,6 @@ plugin_files=(
     /usr/share/fzf/key-bindings.zsh
     /usr/share/fzf/completion.zsh
     ~/.config/fzf/fzf.sh
-    # nvm
-    "$NVM_DIR/nvm.sh"
-    "$NVM_DIR/bash_completion"
     # Rust
     "~/.local/share/cargo/env"
 )
@@ -102,7 +97,12 @@ for plugin_file in "${plugin_files[@]}"; do
     [[ -f "$plugin_file" ]] && source "$plugin_file"
 done
 
-eval "$(starship init zsh)"
+FNM_PATH="/home/zedo/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+    export PATH="/home/zedo/.local/share/fnm:$PATH"
+    eval "$(fnm env --use-on-cd)"
+fi
+
 
 # pnpm
 export PNPM_HOME="/home/zedo/.local/share/pnpm"
@@ -111,3 +111,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+eval "$(starship init zsh)"
