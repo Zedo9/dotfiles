@@ -66,4 +66,4 @@ vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.showtabline = 1 -- 2: Always | 1: Only when >1 tab | 0 : Never
 
 vim.opt.expandtab = true -- Use spaces instead of tabs
-vim.opt.tabstop = 4 -- Number of spaces tabs count for
+vim.opt.tabstop = 2 -- Number of spaces tabs count for

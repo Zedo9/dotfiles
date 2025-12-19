@@ -32,7 +32,6 @@ return {
 			callback = function(event, bufnr)
 				local map = function(keys, func, desc, mode)
 					mode = mode or "n"
-					---@diagnostic disable-next-line: missing-fields
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
