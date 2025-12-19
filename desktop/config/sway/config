@@ -134,7 +134,7 @@ bindsym $mod+f exec nautilus
 bindsym $mod+v exec rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons
 bindsym $mod+a exec wlr-screenshot
 bindsym $mod+o exec brave http://localhost:8080
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec ghostty
 bindsym $mod+p exec killall rofi || rofi -show drun
 bindsym $mod+comma exec rofimoji
 
