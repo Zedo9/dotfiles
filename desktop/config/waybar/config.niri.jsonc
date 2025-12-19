@@ -1,0 +1,14 @@
+{
+  "include": ["~/.config/waybar/base.jsonc"],
+  "modules-left": ["niri/workspaces", "niri/window"],
+  "niri/workspaces": {
+    "format": "{value}",
+  },
+  "niri/window": {
+    "format": "{}",
+    // "rewrite": {
+    //   "(.*) - Mozilla Firefox": "🌎 $1",
+    //   "(.*) - zsh": "> [$1]",
+    // },
+  },
+}
